@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	{% load static %}
+	{% get_static_prefix as STATIC_PREFIX %}
+	<meta charset="UTF-8">
+	<title>Inicio</title>
+
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/estilos.css"> 
+	<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/bootstrap.min.css">
+	<script src="{{STATIC_PREFIX}}js/bootstrap.min.js"></script>
+	
+</head>
+<body class="homepage">
+
+{% block captura  %}
+{% endblock %}
+
+</body>
+</html>
