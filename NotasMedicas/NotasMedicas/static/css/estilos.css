@@ -25,3 +25,17 @@
 	margin: auto;
 }
 /*Termina login*/
+
+/*Formularios de captura*/
+
+form ul
+{
+	list-style: none;
+}
+
+form ul li
+{
+	display: inline-block;
+	vertical-align: top;
+}
+/**/

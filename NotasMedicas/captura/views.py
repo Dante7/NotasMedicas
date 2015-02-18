@@ -1,6 +1,6 @@
 # Create your views here.
 from captura.models import *
-#from captura.forms import *
+from captura.forms import *
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -58,13 +58,13 @@ def CapNota(request,folio=''):
 		formulario = FrmNota(request.POST)
 		if formulario.is_valid():
 			formulario.save()
-			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'espe': request.session['espe']}
+			resultado = {'form':formulario, 'folio': request.session['folio'], 'espe': request.session['espe']}
 		else:
-			resultado = {'form':formulario, 'msg':msg}
+			resultado = {'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		formulario = FrmNota()
 		pass
-		resultado = {'form':formulario, 'msg':msg,'usuario': request.session['usuario']}
+		resultado = {'form':formulario}
 	
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
