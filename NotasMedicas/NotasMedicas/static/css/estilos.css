@@ -27,15 +27,8 @@
 /*Termina login*/
 
 /*Formularios de captura*/
-
-form ul
+#tbl1
 {
-	list-style: none;
-}
-
-form ul li
-{
-	display: inline-block;
-	vertical-align: top;
+	padding: 1em 2em 1em 2em;
 }
 /**/
