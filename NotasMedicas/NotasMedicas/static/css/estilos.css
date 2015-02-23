@@ -14,16 +14,22 @@
 
 }
 
-#busqueda
-{
-	margin: auto;
-}
 
 h2
 {
 	text-align: center;
 	margin:auto;
 	padding: 0.2em 0 0.2em 0;
+}
+#cuerpo
+{
+	margin: auto;
+}
+
+#btnNuevo
+{
+	margin:0.5em 0 0.5em 0;
+
 }
 
 @media screen and (min-width: 800px) {
@@ -36,9 +42,14 @@ h2
 		{
 			width:50%;
 		}
-	#busqueda
+	#cuerpo
 		{
 			width: 70%;
+		}
+	#btnNuevo
+		{
+			width: 180px;
+			
 		}
 }
 
@@ -52,9 +63,14 @@ h2
 		{
 			width:90%;
 		}
-	#busqueda
+	#cuerpo
 		{
 			width: 90%;
+		}
+	#btnNuevo
+		{
+			width: 120px;
+			
 		}
 }
 

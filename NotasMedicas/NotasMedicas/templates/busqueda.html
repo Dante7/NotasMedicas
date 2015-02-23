@@ -2,20 +2,25 @@
 
 {% block captura  %}
 	<h2 class="bg-primary">Captura de notas</h2>
-	<table class="table table-responsive table-bordered" id="busqueda">
-		<thead>
-			<th>
-				<td>NSS</td>
-				<td>Nombre</td>
-				<td>Estatus</td>
-			</th>
-		</thead>
-		{% for registro in datos %}
-			<tr>
-				<td>{{registro.nss}}</td>
-				<td>{{registro.nombre}}</td>
-				<td>{{registro.id}}</td>
-			</tr>
-		{% endfor %}
-	</table>
+	<section id="cuerpo">
+		<button type="button" class="btn btn-info" id="btnNuevo">Nuevo paciente</button>
+		<table class="table table-responsive table-bordered" id="busqueda">
+			<thead>
+				<th>
+					<td>NSS</td>
+					<td>Nombre</td>
+					<td>Estatus</td>
+				</th>
+			</thead>
+			<tbody>
+				{% for registro in datos %}
+					<tr>
+						<td>{{registro.nss}}</td>
+						<td>{{registro.nombre}}</td>
+						<td>{{registro.id}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</section>
 {% endblock %}
