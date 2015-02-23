@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block captura  %}
+	<h2 class="bg-primary">Captura de notas</h2>
+	<form action="POST" class="form-horizontal" role="form" id="tbl1">
+		{{form.as_p}}
+		<input class="btn btn-primary" type="submit" value="Guardar">
+	</form>
+
+{% endblock %}

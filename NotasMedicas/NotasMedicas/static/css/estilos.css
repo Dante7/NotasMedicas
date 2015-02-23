@@ -1,20 +1,68 @@
 /*Login*/
 #loginform
-{
-	max-width: 70%;
-	min-width: 50%;
+{	
 	margin: auto;
-	margin-top: 3em;
 	border-style: groove;
 	border-radius: 5px;
 	padding: 3em 2em 2em 0em;
+}
+
+#tbl1
+{
+	margin:auto;
+	padding: 0 1em 0 1em;
+
+}
+
+#busqueda
+{
+	margin: auto;
+}
+
+h2
+{
+	text-align: center;
+	margin:auto;
+	padding: 0.2em 0 0.2em 0;
+}
+
+@media screen and (min-width: 800px) {
+	#loginform
+		{	
+			margin-top: 5em;
+			width: 30%;
+		}
+	#tbl1
+		{
+			width:50%;
+		}
+	#busqueda
+		{
+			width: 70%;
+		}
+}
+
+@media screen and (max-width: 500px) {
+	#loginform
+		{	
+			margin-top: 1em;
+			width: 90%;
+		}
+	#tbl1
+		{
+			width:90%;
+		}
+	#busqueda
+		{
+			width: 90%;
+		}
 }
 
 #loginform input, img, label
 {
 	max-width: 100%;
 	display: inline-block;
-	margin: 1em 1em 1em 1em;
+	margin: 0.5em 1em 0.5em 1em;
 }
 
 #logo
@@ -25,10 +73,3 @@
 	margin: auto;
 }
 /*Termina login*/
-
-/*Formularios de captura*/
-#tbl1
-{
-	padding: 1em 2em 1em 2em;
-}
-/**/

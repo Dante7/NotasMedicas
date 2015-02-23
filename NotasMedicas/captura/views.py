@@ -33,17 +33,10 @@ def Login(request):
 			hora = time.strftime("%H:%M:%S")
 
 			resultado = {'estado':'correcto','mensaje':'Entrada registrada'} 
-			a = RegEnt()
-			a.usuario = username
-			a.fecha_registro = fecha
-			a.hora_registro = hora
-			a.ip = ip
-			a.tipo_registro = 'entrada'
-			a.save()
 			request.session['usuario'] = username
 			request.session['staff'] = user.is_staff
 
-			return HttpResponseRedirect('/menu')
+			return HttpResponseRedirect('/nota')
 		else:
 		# Show an error page
 			resultado = {'estado':'incorrecto','mensaje':'Sus datos no coinciden favor de verificarlos'}
@@ -52,8 +45,33 @@ def Login(request):
 	return render_to_response(template, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
+def Busqueda(request):
+	template = 'busqueda.html'
+	datos = Tbl1Paciente.objects.all()
+	resultado = {'datos':datos}
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def CapPaciente(request,folio=''):
+	template = 'captura.html'
+	if request.method=='POST':
+		formulario = FrmPaciente(request.POST)
+		if formulario.is_valid():
+			formulario.save()
+			resultado = {'form':formulario, 'folio': request.session['folio'], 'espe': request.session['espe']}
+		else:
+			resultado = {'form':formulario}
+		return render_to_response(template, resultado, context_instance=RequestContext(request))
+	else:
+		formulario = FrmPaciente()
+		pass
+		resultado = {'form':formulario}
+	
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
 def CapNota(request,folio=''):
-	template = 'tbl1.html'
+	template = 'captura.html'
 	if request.method=='POST':
 		formulario = FrmNota(request.POST)
 		if formulario.is_valid():
