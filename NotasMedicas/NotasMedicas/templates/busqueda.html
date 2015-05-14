@@ -3,7 +3,7 @@
 {% block captura  %}
 	<h2 class="bg-primary">Captura de notas</h2>
 	<section id="cuerpo">
-		<button type="button" class="btn btn-info" id="btnNuevo">Nuevo paciente</button>
+		<button type="button" class="btn btn-info"  data-toggle="modal" data-target="#myModal"  id="btnNuevo">Nuevo paciente</button>
 		<table class="table table-responsive table-bordered" id="busqueda">
 			<thead>
 				<th>
@@ -23,4 +23,25 @@
 			</tbody>
 		</table>
 	</section>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Nuevo paciente</h4>
+				</div>
+				<div class="modal-body">
+					¿Desea iniciar El alta de un nuevo paciente?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<a href="/paciente">
+						<button type="button" class="btn btn-primary">Aceptar</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

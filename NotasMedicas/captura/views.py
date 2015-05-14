@@ -36,12 +36,17 @@ def Login(request):
 			request.session['usuario'] = username
 			request.session['staff'] = user.is_staff
 
-			return HttpResponseRedirect('/nota')
+			return HttpResponseRedirect('/menu')
 		else:
 		# Show an error page
 			resultado = {'estado':'incorrecto','mensaje':'Sus datos no coinciden favor de verificarlos'}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 
+	return render_to_response(template, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def Menu(request):
+	template = 'menu.html'
 	return render_to_response(template, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
@@ -57,9 +62,13 @@ def CapPaciente(request,folio=''):
 	if request.method=='POST':
 		formulario = FrmPaciente(request.POST)
 		if formulario.is_valid():
+			print "Es valido"
 			formulario.save()
-			resultado = {'form':formulario, 'folio': request.session['folio'], 'espe': request.session['espe']}
+			print formulario
+			resultado = {'form':formulario}
+			return HttpResponseRedirect('/nota')
 		else:
+			print "No es valido"
 			resultado = {'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
@@ -82,6 +91,24 @@ def CapNota(request,folio=''):
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		formulario = FrmNota()
+		pass
+		resultado = {'form':formulario}
+	
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def CapIngreso(request,folio=''):
+	template = 'captura.html'
+	if request.method=='POST':
+		formulario = FrmIngreso(request.POST)
+		if formulario.is_valid():
+			formulario.save()
+			resultado = {'form':formulario, 'folio': request.session['folio'], 'espe': request.session['espe']}
+		else:
+			resultado = {'form':formulario}
+		return render_to_response(template, resultado, context_instance=RequestContext(request))
+	else:
+		formulario = FrmIngreso()
 		pass
 		resultado = {'form':formulario}
 	

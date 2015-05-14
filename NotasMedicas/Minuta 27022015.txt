@@ -1,0 +1,64 @@
+Ordenar por numero de cama
+
+Modificacion de datos de paciente para cambio de numero de cama
+
+Datos requeridos en la primera pantalla
+NSS
+Nombre
+Edad
+Sexo
+
+Historia clinica relacion directa al paciente
+Se captura una sola vez
+
+Fecha de nacimiento prioridad
+Edad En caso de no tener fecha de naciemiento
+
+
+Validar ultimos caracteres de NSS
+1M1992OR
+1 - Tipo asegurado
+M - Genero
+1992 - Año de nacimiento
+OR - Regimen
+
+Llenar automaticamente sexo y año de nacimiento para calcular la edad en caso de que no se tenga la fecha de nacimiento
+
+nss = Numero de afiliaciíon
+Mascara de captura NSS
+
+Widget calendario para fecha de naciemiento con validacion de año de nss
+
+Cama en datos de paciente con posibilidad de editar
+
+*******Nota de ingreso********
+
+Catalogo de CIE-10
+
+Para antecedentes patologicos
+Y para diagnostico final
+
+En el diagnostico nosologico deben de aparecer las patologias de antecedentes
+
+
+Patologias
+Tiempo de diagnostico (Semanas, meses, años)
+Tiempo de evolucion (Semanas, meses, años)
+Tratamiento (5 medicamentos)
+Limitar lista de medicamnetos en funcion de la patologia reportadda.
+
+Opcion de "se desconoce" las opciones de patologias.
+
+Datos de exploracion fisica es distinto para cada nota
+
+Datos de laboratorio "Revisar vinculación con sistema"
+Estructura de datos de pruebas de laboratorio
+
+
+Calificacion pronostica.
+apache y otro especifico de enfermedad
+Score de calificacion al final para calcular resultados.
+Links de ayuda.
+
+
+********Nota de gravedad*******

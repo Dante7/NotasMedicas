@@ -1,3 +1,16 @@
+body
+{
+	margin: 1em 1em 0 1em;
+
+}
+
+h2
+{
+	text-align: center;
+	margin:auto;
+	padding: 0.2em 0 0.2em 0;
+}
+
 /*Login*/
 #loginform
 {	
@@ -7,6 +20,22 @@
 	padding: 3em 2em 2em 0em;
 }
 
+#loginform input, img, label
+{
+	max-width: 100%;
+	display: inline-block;
+	margin: 0.5em 1em 0.5em 1em;
+}
+
+#logo
+{
+	max-width: 50%;
+	min-width: 20%;
+	height: auto;
+	margin: auto;
+}
+
+/*Termina login*/
 #tbl1
 {
 	margin:auto;
@@ -14,13 +43,6 @@
 
 }
 
-
-h2
-{
-	text-align: center;
-	margin:auto;
-	padding: 0.2em 0 0.2em 0;
-}
 #cuerpo
 {
 	margin: auto;
@@ -74,18 +96,12 @@ h2
 		}
 }
 
-#loginform input, img, label
+.notas div
 {
-	max-width: 100%;
-	display: inline-block;
-	margin: 0.5em 1em 0.5em 1em;
+	text-align: center;
 }
 
-#logo
+.notas img 
 {
-	max-width: 50%;
-	min-width: 20%;
-	height: auto;
-	margin: auto;
+	width: 180px;
 }
-/*Termina login*/
