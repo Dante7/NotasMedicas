@@ -4,10 +4,11 @@ from django.db import models
 
 class Tbl1Paciente(models.Model):
     #id = models.IntegerField(unique=True, primary_key=True)
-    sexo = models.CharField(max_length=40)
-    edad = models.IntegerField()
-    nombre = models.CharField(max_length=135)
     nss = models.CharField(max_length=135)
+    nombre = models.CharField(max_length=135)
+    edad = models.IntegerField()
+    fecha_nacimiento = models.CharField(max_length=135)
+    sexo = models.CharField(max_length=40)
     estado = models.CharField(max_length=135)
     escolaridad = models.CharField(max_length=135)
     religion = models.CharField(max_length=135)
@@ -15,6 +16,7 @@ class Tbl1Paciente(models.Model):
     estado_civil = models.CharField(max_length=135)
     tipo_interrogatorio = models.CharField(max_length=135)
     status = models.CharField(max_length=135, null=True, blank=True, default="Alta")
+    cama = models.CharField(max_length=135)
     class Meta:
         db_table = u'tbl1_paciente'
 

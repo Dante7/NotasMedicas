@@ -2,66 +2,100 @@
 
 {% block captura  %}
 
-<!-- 
-<div class="panel panel-primary">
+
+<!-- <div class="panel panel-primary">
 	<div class="panel-heading"></div>
 	<div class="panel-body">
 		<div class="notas">
-			<img src="{{STATIC_PREFIX}}img/n.png" alt="" class="img-thumbnail">
-			<img src="{{STATIC_PREFIX}}img/n.png" alt="" class="img-thumbnail">
-			<img src="{{STATIC_PREFIX}}img/n.png" alt="" class="img-thumbnail">
-			<img src="{{STATIC_PREFIX}}img/n.png" alt="" class="img-thumbnail">
-			<img src="{{STATIC_PREFIX}}img/n.png" alt="" class="img-thumbnail">
+			<div class="">
+				<img src="{{STATIC_PREFIX}}img/n.png" alt="" class="img-thumbnail">
+				<button type="button" class="btn btn-primary">Nota de ingreso</button>
+			</div>
+			<div class="">
+				<img src="{{STATIC_PREFIX}}img/n.png" alt="" class="img-thumbnail">
+				<button type="button" class="btn btn-primary">Nota de ingreso</button>
+			</div>
+			<div class="">
+				<img src="{{STATIC_PREFIX}}img/n.png" alt="" class="img-thumbnail">
+				<button type="button" class="btn btn-primary">Nota de ingreso</button>
+			</div>
+			<div class="">
+				<img src="{{STATIC_PREFIX}}img/n.png" alt="" class="img-thumbnail">
+				<button type="button" class="btn btn-primary">Nota de ingreso</button>
+			</div>
+			<div class="">
+				<img src="{{STATIC_PREFIX}}img/n.png" alt="" class="img-thumbnail">
+				<button type="button" class="btn btn-primary">Nota de ingreso</button>
+			</div>
 		</div>
 	</div>	
-</div>
--->
+</div> -->
 
-<div class="row">
-	<div class="col-sm-6 col-md-2">
-		<div class="thumbnail">
-			<img src="{{STATIC_PREFIX}}img/n.png" alt="...">
-			<div class="caption">
-				<h3>nota</h3>
-				<p>
-					<a href="#" class="btn btn-primary" role="button">Button</a> 
-				</p>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2>Menu de notas</h2>
+	</div>
+	<div class="panel-body" id="menu">
+
+		<div class="row">
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="thumbnail">
+				<img src="{{STATIC_PREFIX}}img/n.png" alt="...">
+					<div class="caption">
+						<h3>Ingreso</h3>
+						<p>
+							<a href="../ingreso" class="btn btn-primary btn-lg" role="button">Capturar</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="thumbnail">
-			<img src="{{STATIC_PREFIX}}img/n.png" alt="...">
-			<div class="caption">
-				<h3>nota</h3>
-				<p>
-					<a href="#" class="btn btn-primary" role="button">Button</a> 
-				</p>
+
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="thumbnail">
+				<img src="{{STATIC_PREFIX}}img/n.png" alt="...">
+					<div class="caption">
+						<h3>Diaria</h3>
+						<p>
+							<a href="" class="btn btn-primary btn-lg" role="button">Capturar</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="thumbnail">
-			<img src="{{STATIC_PREFIX}}img/n.png" alt="...">
-			<div class="caption">
-				<h3>nota</h3>
-				<p>
-					<a href="#" class="btn btn-primary" role="button">Button</a> 
-				</p>
+
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="thumbnail">
+				<img src="{{STATIC_PREFIX}}img/n.png" alt="...">
+					<div class="caption">
+						<h3>Gravedad</h3>
+						<p>
+							<a href="#" class="btn btn-primary btn-lg" role="button">Capturar</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="thumbnail">
-			<img src="{{STATIC_PREFIX}}img/n.png" alt="...">
-			<div class="caption">
-				<h3>nota</h3>
-				<p>
-					<a href="#" class="btn btn-primary" role="button">Button</a> 
-				</p>
+
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="thumbnail">
+				<img src="{{STATIC_PREFIX}}img/n.png" alt="...">
+					<div class="caption">
+						<h3>Alta</h3>
+						<p>
+							<a href="#" class="btn btn-primary btn-lg" role="button">Capturar</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="thumbnail">
-			<img src="{{STATIC_PREFIX}}img/n.png" alt="...">
-			<div class="caption">
-				<h3>nota</h3>
-				<p>
-					<a href="#" class="btn btn-primary" role="button">Button</a> 
-				</p>
+
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="thumbnail">
+				<img src="{{STATIC_PREFIX}}img/n.png" alt="...">
+					<div class="caption">
+						<h3>Defunción</h3>
+						<p>
+							<a href="#" class="btn btn-primary btn-lg" role="button">Capturar</a>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

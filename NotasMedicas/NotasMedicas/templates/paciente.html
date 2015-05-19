@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+
+{% block captura  %}
+<script type="text/javascript">
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip({
+	        placement : 'top'
+	    });
+	    //Candado de nss vacio
+	    $('#id_nss').focusout(function(){
+	    	var val = this.value;
+	    	if (val == "") {
+	    		$('#id_nss').focus();
+	    	};
+	    });
+
+	    // Validacion de NSS
+
+	    //Edad
+	    $('#id_edad').focusout(function(){
+	   		var year = new Date().getFullYear();
+	   		year = year - this.value;
+	   		//console.log(year);
+	   		var fecha
+	   		fecha = year + "-01-01"
+	   		$('#id_fecha_nacimiento').val(fecha);
+	   	});
+	});
+</script>
+	<h2 class="bg-primary">Nuevo paciente</h2>
+	<form action="" class="form-horizontal" role="form" method="post" id="tbl1">{% csrf_token %}
+		<table class="table table-condensed ">
+		{% for campo in form.visible_fields  %}
+			<tr>
+				<td>{{campo.label}}</td>
+				<td>{{campo}}</td>
+				{% if campo.errors %}
+					<td>
+						<a href="#" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" class="error">
+							<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" aria-hidden="true"></span>
+						</a>
+					</td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+		</table>
+		<input class="btn btn-primary" type="submit" value="Guardar">
+	</form>
+
+{% endblock %}

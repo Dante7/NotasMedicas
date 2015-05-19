@@ -11,6 +11,14 @@ urlpatterns = patterns('',
 
     url(r'^$', 'captura.views.Login'),
     url(r'^menu/', 'captura.views.Menu'),
+
+    url(r'^ingreso/', 'captura.views.CapIngreso'),
+    url(r'^diaria/', 'captura.views.CapDiaria'),
+    url(r'^gravedad/', 'captura.views.CapGravedad'),
+    url(r'^alta/', 'captura.views.CapAlta'),
+    url(r'^defuncion/', 'captura.views.CapDefuncion'),
+
+
     url(r'^busqueda/', 'captura.views.Busqueda'),
     url(r'^nota/', 'captura.views.CapNota'),
     url(r'^paciente/', 'captura.views.CapPaciente'),

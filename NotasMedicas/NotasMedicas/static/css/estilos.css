@@ -11,6 +11,11 @@ h2
 	padding: 0.2em 0 0.2em 0;
 }
 
+form
+{
+	
+}
+
 /*Login*/
 #loginform
 {	
@@ -36,22 +41,19 @@ h2
 }
 
 /*Termina login*/
-#tbl1
-{
-	margin:auto;
-	padding: 0 1em 0 1em;
 
+.row 
+{
+	text-align: center;
 }
 
-#cuerpo
+.row img 
 {
-	margin: auto;
+	width: 140px;
 }
-
-#btnNuevo
+.pacAlta
 {
-	margin:0.5em 0 0.5em 0;
-
+	margin: 1em 0 1em 0;
 }
 
 @media screen and (min-width: 800px) {
@@ -59,19 +61,6 @@ h2
 		{	
 			margin-top: 5em;
 			width: 30%;
-		}
-	#tbl1
-		{
-			width:50%;
-		}
-	#cuerpo
-		{
-			width: 70%;
-		}
-	#btnNuevo
-		{
-			width: 180px;
-			
 		}
 }
 
@@ -81,27 +70,4 @@ h2
 			margin-top: 1em;
 			width: 90%;
 		}
-	#tbl1
-		{
-			width:90%;
-		}
-	#cuerpo
-		{
-			width: 90%;
-		}
-	#btnNuevo
-		{
-			width: 120px;
-			
-		}
-}
-
-.notas div
-{
-	text-align: center;
-}
-
-.notas img 
-{
-	width: 180px;
 }

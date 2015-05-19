@@ -6,6 +6,13 @@ from django.contrib.admin.widgets import AdminDateWidget
 from django import forms
 from captura.models import *
 
+input_formats = ['%Y-%m-%d',
+				'%y-%m-%d',
+				'%m/%d/%Y',
+				'%m/%d/%y',
+				'%d/%m/%Y',
+				'%d/%m/%y']
+
 notas = (
 			('Ingreso','Ingreso'),
 			('Alta','Alta'),
@@ -18,6 +25,41 @@ sexo = (
 			('Masculino','Masculino'),
 )
 
+estados = (
+			('Aguascalientes','Aguascalientes'),
+			('Baja California','Baja California'),
+			('Baja California Sur','Baja California Sur'),
+			('Campeche','Campeche'),
+			('Chiapas','Chiapas'),
+			('Chihuahua','Chihuahua'),
+			('Coahuila','Coahuila'),
+			('Colima','Colima'),
+			('Distrito Federal','Distrito Federal'),
+			('Durango','Durango'),
+			('Estado de México','Estado de México'),
+			('Guanajuato','Guanajuato'),
+			('Guerrero','Guerrero'),
+			('Hidalgo','Hidalgo'),
+			('Jalisco','Jalisco'),
+			('Michoacán','Michoacán'),
+			('Morelos','Morelos'),
+			('Nayarit','Nayarit'),
+			('Nuevo León','Nuevo León'),
+			('Oaxaca','Oaxaca'),
+			('Puebla','Puebla'),
+			('Querétaro','Querétaro'),
+			('Quintana Roo','Quintana Roo'),
+			('San Luis Potosí','San Luis Potosí'),
+			('Sinaloa','Sinaloa'),
+			('Sonora','Sonora'),
+			('Tabasco','Tabasco'),
+			('Tamaulipas','Tamaulipas'),
+			('Tlaxcala','Tlaxcala'),
+			('Veracruz','Veracruz'),
+			('Yucatán','Yucatán'),
+			('Zacatecas','Zacatecas')
+)
+
 class FrmPaciente(ModelForm):
 	"""Formulario de llenado de datos de paciente"""	
 	#id = forms.CharField(widget=forms.HiddenInput(), required=False)
@@ -28,32 +70,34 @@ class FrmPaciente(ModelForm):
 	edad = forms.CharField()
 	edad.widget.attrs['class']='form-control'
 
+	fecha_nacimiento = forms.DateField(widget=forms.DateInput(attrs={'class':'form-control'}), input_formats=input_formats)
+
 	nombre = forms.CharField()
 	nombre.widget.attrs['class']='form-control'
 
-	nss = forms.CharField()
+	nss = forms.CharField(label="Numero de seguridad social")
 	nss.widget.attrs['class']='form-control'
 
-	estado = forms.CharField()
+	estado = forms.ChoiceField(choices=estados)
 	estado.widget.attrs['class']='form-control'
 
-	escolaridad = forms.CharField()
+	escolaridad = forms.CharField(required=False)
 	escolaridad.widget.attrs['class']='form-control'
 
-	religion = forms.CharField()
+	religion = forms.CharField(required=False)
 	religion.widget.attrs['class']='form-control'
 
-	ocupacion = forms.CharField()
+	ocupacion = forms.CharField(required=False)
 	ocupacion.widget.attrs['class']='form-control'
 
-	estado_civil = forms.CharField()
+	estado_civil = forms.CharField(required=False)
 	estado_civil.widget.attrs['class']='form-control'
 
-	tipo_interrogatorio = forms.CharField()
+	tipo_interrogatorio = forms.CharField(required=False)
 	tipo_interrogatorio.widget.attrs['class']='form-control'
 
-	tipo_interrogatorio = forms.CharField()
-	tipo_interrogatorio.widget.attrs['class']='form-control'
+	cama = forms.CharField()
+	cama.widget.attrs['class']='form-control'
 
 	status = forms.CharField(widget=forms.HiddenInput(), required=False)
 
@@ -85,11 +129,11 @@ class FrmNota(ModelForm):
 class FrmIngreso(ModelForm):
 	"""Formulario de llenado de notas"""
 	id_tbl1 = forms.CharField(widget=forms.HiddenInput())
-	antecedentes_heredofamiliares = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'2'}))
+	antecedentes_heredofamiliares = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
-	antecedentes_personales_patologicos = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'2'}))
+	antecedentes_personales_patologicos = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
-	antecedentes_personales_no_patologicos = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'2'}))
+	antecedentes_personales_no_patologicos = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
 	padecimiento_actual = forms.CharField()
 	padecimiento_actual.widget.attrs['class']='form-control'

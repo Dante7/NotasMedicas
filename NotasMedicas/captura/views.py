@@ -58,17 +58,15 @@ def Busqueda(request):
 
 @login_required(login_url='/')
 def CapPaciente(request,folio=''):
-	template = 'captura.html'
+	template = 'paciente.html'
 	if request.method=='POST':
 		formulario = FrmPaciente(request.POST)
 		if formulario.is_valid():
-			print "Es valido"
 			formulario.save()
-			print formulario
 			resultado = {'form':formulario}
-			return HttpResponseRedirect('/nota')
+			return HttpResponseRedirect('/ingreso')
 		else:
-			print "No es valido"
+			print request.POST.get("fecha_nacimiento")
 			resultado = {'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
@@ -98,18 +96,19 @@ def CapNota(request,folio=''):
 
 @login_required(login_url='/')
 def CapIngreso(request,folio=''):
-	template = 'captura.html'
+	template = 'ingreso.html'
+	data = Tbl1Paciente.objects.all()
 	if request.method=='POST':
 		formulario = FrmIngreso(request.POST)
 		if formulario.is_valid():
 			formulario.save()
-			resultado = {'form':formulario, 'folio': request.session['folio'], 'espe': request.session['espe']}
+			resultado = {'data':data, 'form':formulario, 'folio': request.session['folio'], 'espe': request.session['espe']}
 		else:
-			resultado = {'form':formulario}
+			resultado = {'data':data, 'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		formulario = FrmIngreso()
 		pass
-		resultado = {'form':formulario}
+		resultado = {'data':data, 'form':formulario}
 	
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
