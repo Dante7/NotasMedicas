@@ -37,8 +37,8 @@ class Tbl3Ingreso(models.Model):
     #id = models.IntegerField(unique=True, primary_key=True)
     id_tbl1 = models.ForeignKey(Tbl1Paciente, db_column='id_tbl1')
     antecedentes_heredofamiliares = models.CharField(max_length=135)
-    antecedentes_personales_patologicos = models.CharField(max_length=135)
     antecedentes_personales_no_patologicos = models.CharField(max_length=135)
+    antecedentes_personales_patologicos = models.CharField(max_length=135)
     padecimiento_actual = models.CharField(max_length=135)
     ta = models.CharField(max_length=135)
     fc = models.CharField(max_length=135)
@@ -49,15 +49,12 @@ class Tbl3Ingreso(models.Model):
     talla = models.CharField(max_length=135)
     imc = models.CharField(max_length=135)
     laboratorio = models.CharField(max_length=135)
-    exame_general_orina = models.CharField(max_length=135)
-    gasometria = models.CharField(max_length=135)
-    arterial = models.CharField(max_length=135)
-    acidosis_metabolica_compensada = models.CharField(max_length=135)
-    electrocardiograma = models.CharField(max_length=135)
+    gabinete = models.CharField(max_length=135)
     diagnostico_sindromaticos = models.CharField(max_length=135)
     diagnostico_nosologico = models.CharField(max_length=135)
     diagnostico_diferencial = models.CharField(max_length=135)
-    descripcion_2 = models.CharField(max_length=135)
+    apache = models.CharField(max_length=135)
+    plan_comentario = models.CharField(max_length=135)
 
     class Meta:
         db_table = u'tbl3_ingreso'

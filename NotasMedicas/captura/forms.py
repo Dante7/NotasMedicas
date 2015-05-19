@@ -131,12 +131,14 @@ class FrmIngreso(ModelForm):
 	id_tbl1 = forms.CharField(widget=forms.HiddenInput())
 	antecedentes_heredofamiliares = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
-	antecedentes_personales_patologicos = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
-
 	antecedentes_personales_no_patologicos = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
-	padecimiento_actual = forms.CharField()
-	padecimiento_actual.widget.attrs['class']='form-control'
+	antecedentes_personales_patologicos = forms.CharField()
+	antecedentes_personales_patologicos.widget.attrs['class']='form-control'
+	antecedentes_personales_patologicos.widget.attrs['readonly']=True
+	antecedentes_personales_patologicos.widget.attrs['placeholder']='Click para abrir la captura'
+
+	padecimiento_actual = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
 	ta = forms.CharField()
 	ta.widget.attrs['class']='form-control'
@@ -165,28 +167,22 @@ class FrmIngreso(ModelForm):
 	laboratorio = forms.CharField()
 	laboratorio.widget.attrs['class']='form-control'
 
-	exame_general_orina = forms.CharField()
-	exame_general_orina.widget.attrs['class']='form-control'
+	gabinete = forms.CharField()
+	gabinete.widget.attrs['class']='form-control'
 
-	gasometria = forms.CharField()
-	gasometria.widget.attrs['class']='form-control'
+	diagnostico_sindromaticos = forms.CharField()
+	diagnostico_sindromaticos.widget.attrs['class']='form-control'
 
-	arterial = forms.CharField()
-	arterial.widget.attrs['class']='form-control'
+	diagnostico_nosologico = forms.CharField()
+	diagnostico_nosologico.widget.attrs['class']='form-control'
 
-	acidosis_metabolica_compensada = forms.CharField()
-	acidosis_metabolica_compensada.widget.attrs['class']='form-control'
+	diagnostico_diferencial = forms.CharField()
+	diagnostico_diferencial.widget.attrs['class']='form-control'
 
-	electrocardiograma = forms.CharField()
-	electrocardiograma.widget.attrs['class']='form-control'
+	apache = forms.CharField()
+	apache.widget.attrs['class']='form-control'
 
-	diagnostico_sindromaticos = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'2'}))
-
-	diagnostico_nosologico = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'2'}))
-
-	diagnostico_diferencial = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'2'}))
-
-	descripcion = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
+	plan_comentario = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
 
 	class Meta:

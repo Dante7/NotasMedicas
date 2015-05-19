@@ -62,6 +62,11 @@ form
 			margin-top: 5em;
 			width: 30%;
 		}
+	#captura
+		{
+			margin: auto;
+			 width: 60%;
+		}
 }
 
 @media screen and (max-width: 500px) {
@@ -69,5 +74,10 @@ form
 		{	
 			margin-top: 1em;
 			width: 90%;
+		}
+	#captura
+		{
+			margin: auto;
+			 width: 80%;
 		}
 }
