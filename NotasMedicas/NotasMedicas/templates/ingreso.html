@@ -14,19 +14,19 @@
 	</div>
 	<form action="" class="form-horizontal" role="form" method="post" id="captura">{% csrf_token %}
 		<table class="table table-condensed ">
-		{% for campo in form.visible_fields  %}
-			<tr>
-				<td>{{campo.label}}</td>
-				<td>{{campo}}</td>
-				{% if campo.errors %}
-					<td>
-						<a href="#" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" class="error">
-							<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" aria-hidden="true"></span>
-						</a>
-					</td>
-				{% endif %}
-			</tr>
-		{% endfor %}
+			{% for campo in form.visible_fields  %}
+				<tr>
+					<td>{{campo.label}}</td>
+					<td>{{campo}}</td>
+					{% if campo.errors %}
+						<td>
+							<a href="#" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" class="error">
+								<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" aria-hidden="true"></span>
+							</a>
+						</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
 		</table>
 		<input class="btn btn-primary" type="submit" value="Guardar">
 	</form>
