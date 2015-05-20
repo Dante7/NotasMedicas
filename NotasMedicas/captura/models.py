@@ -28,13 +28,11 @@ class Tbl1Paciente(models.Model):
 
 class Tbl2Nota(models.Model):
     #id = models.IntegerField(unique=True, primary_key=True)
-    id_tbl1 = models.ForeignKey(Tbl1Paciente, db_column='id_tbl1')
-    tipo_nota = models.CharField(max_length=135)
-    descripcion = models.CharField(max_length=135)
-    hospital = models.CharField(max_length=135)
-    medico = models.CharField(max_length=135)
-    cama = models.IntegerField()
-    fecha_hora = models.DateTimeField()
+    #id_tbl1 = models.ForeignKey(Tbl1Paciente, db_column='id_tbl1')
+    fecha = models.DateTimeField()
+    hora = models.DateTimeField()
+    patologias = models.CharField(max_length=135)
+
     class Meta:
         db_table = u'tbl2_nota'
 

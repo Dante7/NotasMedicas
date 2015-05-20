@@ -66,7 +66,6 @@ def CapPaciente(request,folio=''):
 			resultado = {'form':formulario}
 			return HttpResponseRedirect('/ingreso')
 		else:
-			print request.POST.get("fecha_nacimiento")
 			resultado = {'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
@@ -78,7 +77,7 @@ def CapPaciente(request,folio=''):
 
 @login_required(login_url='/')
 def CapNota(request,folio=''):
-	template = 'captura.html'
+	template = 'evo_grav.html'
 	if request.method=='POST':
 		formulario = FrmNota(request.POST)
 		if formulario.is_valid():

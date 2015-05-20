@@ -61,8 +61,12 @@ estados = (
 )
 
 class FrmPaciente(ModelForm):
+
 	"""Formulario de llenado de datos de paciente"""	
 	#id = forms.CharField(widget=forms.HiddenInput(), required=False)
+
+	NSS = forms.ChoiceField(choices=sexo)
+	NSS.widget.attrs['class']='form-control'
 
 	sexo = forms.ChoiceField(choices=sexo)
 	sexo.widget.attrs['class']='form-control'
@@ -106,22 +110,10 @@ class FrmPaciente(ModelForm):
 
 class FrmNota(ModelForm):
 	"""Formulario de llenado de notas"""
-	id_tbl1 = forms.CharField(widget=forms.HiddenInput())
-	tipo_nota = forms.ChoiceField(choices=notas)
-	tipo_nota.widget.attrs['class']='form-control'
 
-	descripcion = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
-
-	hospital = forms.CharField()
-	hospital.widget.attrs['class']='form-control'
-
-	medico = forms.CharField()
-	medico.widget.attrs['class']='form-control'
-
-	cama = forms.CharField()
-	cama.widget.attrs['class']='form-control'
-
-	fecha_hora = forms.DateField(widget=forms.DateInput(format=('%d-%m-%Y'),attrs={'class':'form-control','rows':'3'}))
+	fecha = forms.DateField(widget=forms.DateInput(format=('%d-%m-%Y'),attrs={'class':'form-control','rows':'3'}))
+	hora = forms.DateField(widget=forms.DateInput(format=('%d-%m-%Y'),attrs={'class':'form-control','rows':'3'}))
+	patologias = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
 
 	class Meta:
 		model = Tbl2Nota

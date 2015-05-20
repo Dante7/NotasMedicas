@@ -8,10 +8,7 @@
 	    });
 	});
 </script>
-	<h2 class="bg-primary">Ingreso</h2>
-	<div class="pacAlta">
-		<a href="../paciente" class="btn btn-primary btn-lg">Nuevo paciente</a>
-	</div>
+	<h2 class="bg-primary">Evolucion y gravedad</h2>
 	<form action="" class="form-horizontal" role="form" method="post" id="captura">{% csrf_token %}
 		<table class="table table-condensed">
 			{% for campo in form  %}

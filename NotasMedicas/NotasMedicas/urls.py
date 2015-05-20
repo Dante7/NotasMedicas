@@ -13,8 +13,8 @@ urlpatterns = patterns('',
     url(r'^menu/', 'captura.views.Menu'),
 
     url(r'^ingreso/', 'captura.views.CapIngreso'),
-    url(r'^diaria/', 'captura.views.CapDiaria'),
-    url(r'^gravedad/', 'captura.views.CapGravedad'),
+    url(r'^evolucion/', 'captura.views.CapNota'),
+    url(r'^gravedad/', 'captura.views.CapNota'),
     url(r'^alta/', 'captura.views.CapAlta'),
     url(r'^defuncion/', 'captura.views.CapDefuncion'),
 
