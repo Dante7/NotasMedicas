@@ -128,15 +128,16 @@ class FrmNota(ModelForm):
 
 class FrmIngreso(ModelForm):
 	"""Formulario de llenado de notas"""
-	id_tbl1 = forms.CharField(widget=forms.HiddenInput())
+#	id_tbl1 = forms.CharField(widget=forms.HiddenInput())
 	antecedentes_heredofamiliares = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
 	antecedentes_personales_no_patologicos = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
-	antecedentes_personales_patologicos = forms.CharField()
-	antecedentes_personales_patologicos.widget.attrs['class']='form-control'
-	antecedentes_personales_patologicos.widget.attrs['readonly']=True
-	antecedentes_personales_patologicos.widget.attrs['placeholder']='Click para abrir la captura'
+	# Input compuesto
+	antecedentes_personales_patologicos = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
+	#antecedentes_personales_patologicos.widget.attrs['class']='form-control'
+	#antecedentes_personales_patologicos.widget.attrs['readonly']=True
+	#antecedentes_personales_patologicos.widget.attrs['placeholder']='Click para abrir la captura'
 
 	padecimiento_actual = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
@@ -164,20 +165,35 @@ class FrmIngreso(ModelForm):
 	imc = forms.CharField()
 	imc.widget.attrs['class']='form-control'
 
-	laboratorio = forms.CharField()
-	laboratorio.widget.attrs['class']='form-control'
+	# Input compuesto
+	laboratorio = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
+	#laboratorio.widget.attrs['class']='form-control'
+	#laboratorio.widget.attrs['readonly']=True
+	#laboratorio.widget.attrs['placeholder']='Click para abrir la captura'
 
-	gabinete = forms.CharField()
-	gabinete.widget.attrs['class']='form-control'
+	# Input compuesto
+	gabinete = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
+	#gabinete.widget.attrs['class']='form-control'
+	#gabinete.widget.attrs['readonly']=True
+	#gabinete.widget.attrs['placeholder']='Click para abrir la captura'
 
-	diagnostico_sindromaticos = forms.CharField()
-	diagnostico_sindromaticos.widget.attrs['class']='form-control'
+	# Input compuesto
+	diagnostico_sindromaticos = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
+	#diagnostico_sindromaticos.widget.attrs['class']='form-control'
+	#diagnostico_sindromaticos.widget.attrs['readonly']=True
+	#diagnostico_sindromaticos.widget.attrs['placeholder']='Click para abrir la captura'
 
-	diagnostico_nosologico = forms.CharField()
-	diagnostico_nosologico.widget.attrs['class']='form-control'
+	# Input compuesto
+	diagnostico_nosologico = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
+	#diagnostico_nosologico.widget.attrs['class']='form-control'
+	#diagnostico_nosologico.widget.attrs['readonly']=True
+	#diagnostico_nosologico.widget.attrs['placeholder']='Click para abrir la captura'
 
-	diagnostico_diferencial = forms.CharField()
-	diagnostico_diferencial.widget.attrs['class']='form-control'
+	# Input compuesto
+	diagnostico_diferencial = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
+	#diagnostico_diferencial.widget.attrs['class']='form-control'
+	#diagnostico_diferencial.widget.attrs['readonly']=True
+	#diagnostico_diferencial.widget.attrs['placeholder']='Click para abrir la captura'
 
 	apache = forms.CharField()
 	apache.widget.attrs['class']='form-control'

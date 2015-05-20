@@ -98,17 +98,18 @@ def CapNota(request,folio=''):
 def CapIngreso(request,folio=''):
 	template = 'ingreso.html'
 	data = Tbl1Paciente.objects.all()
+	cat = Cie10.objects.all()
 	if request.method=='POST':
 		formulario = FrmIngreso(request.POST)
 		if formulario.is_valid():
 			formulario.save()
-			resultado = {'data':data, 'form':formulario, 'folio': request.session['folio'], 'espe': request.session['espe']}
+			resultado = {'data':data, 'cat':cat, 'form':formulario, 'folio': request.session['folio'], 'espe': request.session['espe']}
 		else:
-			resultado = {'data':data, 'form':formulario}
+			resultado = {'data':data, 'cat':cat, 'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		formulario = FrmIngreso()
 		pass
-		resultado = {'data':data, 'form':formulario}
+		resultado = {'data':data, 'cat':cat, 'form':formulario}
 	
 	return render_to_response(template, resultado, context_instance=RequestContext(request))

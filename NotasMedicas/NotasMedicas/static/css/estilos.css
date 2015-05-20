@@ -56,6 +56,16 @@ form
 	margin: 1em 0 1em 0;
 }
 
+.items
+{
+	height: 4rem;
+	margin: 0 1rem 0 0;
+	border-color: #d3d3d3;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+}
+
 @media screen and (min-width: 800px) {
 	#loginform
 		{	

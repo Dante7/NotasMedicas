@@ -2,6 +2,12 @@ from django.db import models
 
 # Create your models here.
 
+class Cie10(models.Model):
+    clave = models.CharField(max_length=765, db_column='Clave', blank=True) # Field name made lowercase.
+    nombre = models.CharField(max_length=765, db_column='Nombre', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'cie_10'
+
 class Tbl1Paciente(models.Model):
     #id = models.IntegerField(unique=True, primary_key=True)
     nss = models.CharField(max_length=135)
@@ -35,7 +41,7 @@ class Tbl2Nota(models.Model):
 class Tbl3Ingreso(models.Model):
     """docstring for Tbl3ingreso"""
     #id = models.IntegerField(unique=True, primary_key=True)
-    id_tbl1 = models.ForeignKey(Tbl1Paciente, db_column='id_tbl1')
+    #id_tbl1 = models.ForeignKey(Tbl1Paciente, db_column='id_tbl1')
     antecedentes_heredofamiliares = models.CharField(max_length=135)
     antecedentes_personales_no_patologicos = models.CharField(max_length=135)
     antecedentes_personales_patologicos = models.CharField(max_length=135)
