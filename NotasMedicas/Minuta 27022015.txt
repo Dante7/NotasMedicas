@@ -62,3 +62,17 @@ Links de ayuda.
 
 
 ********Nota de gravedad*******
+
+cuadro basico y catalogo de medicamentos del imsss
+
+Edad de diagnostico
+Patologia
+edad o fecha de diagnostico
+tratamiento actual y previo
+dosis
+Comentarios
+
+catalogo de sindromes
+
+
+Lectura dentro de la captura

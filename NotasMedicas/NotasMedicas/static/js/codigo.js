@@ -26,6 +26,7 @@ function CreaRow (table) {
         )
 
 }
+
 function EliminaRow () {
 	// body...
 	$("#tblModal > tbody > tr").each(function () {
