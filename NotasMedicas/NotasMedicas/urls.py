@@ -10,7 +10,10 @@ urlpatterns = patterns('',
     # url(r'^NotasMedicas/', include('NotasMedicas.foo.urls')),
 
     url(r'^$', 'captura.views.Login'),
-    url(r'^menu/', 'captura.views.Menu'),
+    url(r'^camas/', 'captura.views.Camas'),
+    url(r'^formatos/(?P<cama>\d+)/$', 'captura.views.Formatos'),
+
+    url(r'^apache/', 'captura.views.Apache'),
 
     url(r'^ingreso/', 'captura.views.CapIngreso'),
     url(r'^evolucion/', 'captura.views.CapNota'),

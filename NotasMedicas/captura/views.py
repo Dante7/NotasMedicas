@@ -36,7 +36,7 @@ def Login(request):
 			request.session['usuario'] = username
 			request.session['staff'] = user.is_staff
 
-			return HttpResponseRedirect('/menu')
+			return HttpResponseRedirect('/camas')
 		else:
 		# Show an error page
 			resultado = {'estado':'incorrecto','mensaje':'Sus datos no coinciden favor de verificarlos'}
@@ -45,15 +45,28 @@ def Login(request):
 	return render_to_response(template, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
-def Menu(request):
+def Formatos(request, cama):
 	template = 'menu.html'
+	datos = EstructuraEch.objects.all()
+	resultado = {'datos':datos}
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def Apache(request):
+	template = 'apache.html'
 	return render_to_response(template, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
-def Busqueda(request):
-	template = 'busqueda.html'
-	datos = Tbl1Paciente.objects.all()
-	resultado = {'datos':datos}
+def Camas(request):
+	template = 'camas.html'
+	nombres = []
+	seccion = Ca_camas.objects.order_by().values('seccion').distinct()
+	camas = Ca_camas.objects.all()
+	for row in camas:
+		nombres.append(str(row.cama))
+		pass
+	#print nombres
+	resultado = {'seccion':seccion, 'camas':camas, 'nombres':nombres}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 @login_required(login_url='/')

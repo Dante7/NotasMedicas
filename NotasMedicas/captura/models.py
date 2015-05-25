@@ -2,11 +2,23 @@ from django.db import models
 
 # Create your models here.
 
+class Ca_camas(models.Model):
+    seccion = models.CharField(max_length=765, db_column='seccion', blank=True) # Field name made lowercase.
+    cama = models.CharField(max_length=765, db_column='cama', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'ca_camas'
+
 class Cie10(models.Model):
     clave = models.CharField(max_length=765, db_column='Clave', blank=True) # Field name made lowercase.
     nombre = models.CharField(max_length=765, db_column='Nombre', blank=True) # Field name made lowercase.
     class Meta:
         db_table = u'cie_10'
+
+class EstructuraEch(models.Model):
+    id = models.IntegerField(primary_key=True)
+    descripcion = models.CharField(max_length=750)
+    class Meta:
+        db_table = u'estructura_ech'
 
 class Tbl1Paciente(models.Model):
     #id = models.IntegerField(unique=True, primary_key=True)

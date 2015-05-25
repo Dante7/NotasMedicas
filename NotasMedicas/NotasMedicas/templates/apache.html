@@ -1,0 +1,97 @@
+{% extends "index.html" %}
+
+{% block captura  %}
+
+
+<h2 class="bg-primary">Calculo de Apache 2</h2>
+<br>
+<form action="" class="form-horizontal">
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="tr">Temperatura  rectal  (axial +0.5°C) </label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="tr" name="tr"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="tr_res" name="tr_res" readonly> </div>
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="pam">Presión arterial media (mmHg) </label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="pam" name="pam"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="pam_res" name="pam_res" readonly> </div>
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="fc">Frecuencia  Cardiaca  (respuesta ventricular) </label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="fc" name="fc"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="fc_res" name="fc_res" readonly> </div>
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="fr">Frecuencia  respiratoria  (no ventilado o ventilado) </label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="fr" name="fr"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="fr_res" name="fr_res" readonly> </div>
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="oxi">Oxigenación: elegir a o b </label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+				<div role="tabpanel">
+
+					<!-- Nav tabs -->
+					<ul class="nav nav-pills" role="tablist">
+						<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">A</a></li>
+						<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">B</a></li>
+					</ul>
+
+				</div>
+			</div>
+			
+			<!-- aqui entra una validacion para ver que opcion elige -->
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="home">
+					<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="oxiA">a. si FiO2 >0,5 anotar PA-aO2 </label>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="oxiA" name="oxiA"> </div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="oxiA_res" name="oxiA_res" readonly> </div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="profile">
+					<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="oxiB">b. si FiO2 <0,5 anotar PaO2  </label>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="oxiB" name="oxiB"> </div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="oxiB_res" name="oxiB_res" readonly> </div>
+				</div>
+			</div>
+			
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="phA">*Ph arterial (preferido) </label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="phA" name="phA"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="phA_res" name="phA_res" readonly> </div>
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="hco3">*HCO3 sérico (venoso mEq/l) </label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="hco3" name="hco3"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="hco3_res" name="hco3_res" readonly> </div>
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="NaSer">Na+ sérico (mEq/l) </label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="NaSer" name="NaSer"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="NaSer_res" name="NaSer_res" readonly> </div>
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="KSer">K+ sérico (mEq/l) </label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="KSer" name="KSer"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="KSer_res" name="KSer_res" readonly> </div>
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="Creati">*Creatinina sérica (md/dl)</label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="Creati" name="Creati"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="Creati_res" name="Creati_res" readonly> </div>
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="hema">Hematocrito (%) </label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="hema" name="hema"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="hema_res" name="hema_res" readonly> </div>
+		</div>
+		<div  class="form-group">
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-3 control-label" for="leuco">Leucocitos (total/mm3 en miles)</label>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"><input type="text" class="form-control" id="leuco" name="leuco"> </div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5"><input type="text" class="form-control" id="leuco_res" name="leuco_res" readonly> </div>
+		</div>
+</form>
+	
+
+{% endblock %}
