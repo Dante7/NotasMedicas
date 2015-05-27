@@ -74,3 +74,15 @@ class Tbl3Ingreso(models.Model):
 
     class Meta:
         db_table = u'tbl3_ingreso'
+
+
+
+#Vista generada desde mysql
+class CamaPaciente(models.Model):
+    seccion = models.CharField(max_length=2295)
+    cama = models.CharField(max_length=2295)
+    nss = models.CharField(max_length=405, blank=True)
+    nombre = models.CharField(max_length=405, blank=True)
+    status = models.CharField(max_length=405, blank=True)
+    class Meta:
+        db_table = u'cama_paciente'

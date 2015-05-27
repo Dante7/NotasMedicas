@@ -76,7 +76,7 @@ $( document ).ready(function() {
         var botones = $(".camas");
         botones.each(function () {
             // body...
-            if ($(this).text().trim() == valor) 
+            if ($(this).attr('name').trim() == valor) 
             {
                 $(this).removeClass('disabled');
             }else{
@@ -879,7 +879,7 @@ $( document ).ready(function() {
         var valor = $(this).val();
         nombre = nombre.substr(-3);
         if (isNaN(parseInt(valor))) {
-            $(this).focus();
+            //$(this).focus();
         }else{
             if (nombre != 'res') {
                 console.log(nombre);

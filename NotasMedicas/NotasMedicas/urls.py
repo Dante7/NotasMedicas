@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^$', 'captura.views.Login'),
     url(r'^camas/', 'captura.views.Camas'),
-    url(r'^formatos/(?P<cama>\d+)/$', 'captura.views.Formatos'),
+    url(r'^formatos/(?P<nss>\w+)/$', 'captura.views.Formatos'),
 
     url(r'^apache/', 'captura.views.Apache'),
 

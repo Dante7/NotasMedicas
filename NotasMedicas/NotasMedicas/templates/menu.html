@@ -1,3 +1,4 @@
+
 {% extends "index.html" %}
 
 {% block captura  %}
@@ -16,11 +17,6 @@
         <!-- Sidebar -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
-					<li class="sidebar-brand" role="presentation">
-						<a href="#paciente" aria-controls="paciente" role="tab" data-toggle="tab">
-							Paciente
-						</a>
-					</li>
 					{% for nota in datos %}
 						<li role="presentation">
 							<a href="#{{nota.id}}" aria-controls="{{nota.id}}" role="tab" data-toggle="tab">{{nota.descripcion}}</a>
@@ -35,12 +31,35 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="tab-content">
-                    	<div role="tabpanel" class="tab-pane active col-sm-12 col-lg-9" id="paciente">
-							Datos del paciente
-						</div>	
 						{% for nota in datos %}
 							<div role="tabpanel" class="tab-pane col-sm-12 col-lg-9" id="{{nota.id}}">
-								{{nota.descripcion}}
+								{% if paciente %}
+									{% if nota.descripcion == 'Hoja frontal' %}
+										<table class="table table-striped">
+											{% for item in paciente %}
+												<tr>
+													<td><h4>Nombre:</h4></td>
+													<td><h4>{{item.nombre}}</h4></td>
+													
+												</tr>
+												<tr>
+													<td><h4>Edad:</h4></td>
+													<td><h4>{{item.edad}} años</h4></td>
+												</tr>
+												<tr>
+													<td><h4>Numero de afiliacion:</h4></td>
+													<td><h4>{{item.nss}}</h4></td>
+												</tr>
+												<tr>
+													<td><h4>Cama:</h4></td>
+													<td><h4>{{item.cama}}</h4></td>
+												</tr>
+											{% endfor %}
+										</table>
+									{% endif %}
+								{% else %}
+									<a href="../../paciente" class="btn btn-primary">Capturar nota</a>
+								{% endif %}
 							</div>	
 						{% endfor %}
 					</div>

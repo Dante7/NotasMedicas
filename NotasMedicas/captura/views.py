@@ -45,10 +45,11 @@ def Login(request):
 	return render_to_response(template, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
-def Formatos(request, cama):
+def Formatos(request, nss):
 	template = 'menu.html'
 	datos = EstructuraEch.objects.all()
-	resultado = {'datos':datos}
+	paciente = Tbl1Paciente.objects.filter(nss=nss)
+	resultado = {'datos':datos, 'paciente':paciente}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
@@ -60,10 +61,10 @@ def Apache(request):
 def Camas(request):
 	template = 'camas.html'
 	nombres = []
-	seccion = Ca_camas.objects.order_by().values('seccion').distinct()
-	camas = Ca_camas.objects.all()
+	seccion = CamaPaciente.objects.order_by().values('seccion').distinct()
+	camas = CamaPaciente.objects.all()
 	for row in camas:
-		nombres.append(str(row.cama))
+		nombres.append(row.nombre)
 		pass
 	#print nombres
 	resultado = {'seccion':seccion, 'camas':camas, 'nombres':nombres}
