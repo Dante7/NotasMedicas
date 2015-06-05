@@ -16,8 +16,8 @@ urlpatterns = patterns('',
     url(r'^apache/', 'captura.views.Apache'),
 
     url(r'^ingreso/', 'captura.views.CapIngreso'),
-    url(r'^evolucion/', 'captura.views.CapNota'),
-    url(r'^gravedad/', 'captura.views.CapNota'),
+    url(r'^evolucion/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
+    url(r'^revision/(?P<nss>\w+)/$', 'captura.views.CapRevision'),
     url(r'^alta/', 'captura.views.CapAlta'),
     url(r'^defuncion/', 'captura.views.CapDefuncion'),
 

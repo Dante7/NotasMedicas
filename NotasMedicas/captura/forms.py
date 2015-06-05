@@ -65,8 +65,8 @@ class FrmPaciente(ModelForm):
 	"""Formulario de llenado de datos de paciente"""	
 	#id = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-	NSS = forms.ChoiceField(choices=sexo)
-	NSS.widget.attrs['class']='form-control'
+	nss = forms.CharField(label="Numero de seguridad social")
+	nss.widget.attrs['class']='form-control'
 
 	sexo = forms.ChoiceField(choices=sexo)
 	sexo.widget.attrs['class']='form-control'
@@ -78,9 +78,6 @@ class FrmPaciente(ModelForm):
 
 	nombre = forms.CharField()
 	nombre.widget.attrs['class']='form-control'
-
-	nss = forms.CharField(label="Numero de seguridad social")
-	nss.widget.attrs['class']='form-control'
 
 	estado = forms.ChoiceField(choices=estados)
 	estado.widget.attrs['class']='form-control'
@@ -108,15 +105,31 @@ class FrmPaciente(ModelForm):
 	class Meta:
 		model = Tbl1Paciente
 
-class FrmNota(ModelForm):
+class FrmEvolucion(ModelForm):
 	"""Formulario de llenado de notas"""
+	#fecha = forms.DateField(widget=forms.DateInput(attrs={'class':'form-control'}), input_formats=input_formats)
+	def __init__(self, *args, **kwargs):
+		super(FrmEvolucion, self).__init__(*args, **kwargs)
+		for myField in self.fields:
+			self.fields[myField].widget.attrs['class'] = 'form-control'
+			if myField == 'nss':
+				self.fields[myField].widget.attrs['readonly'] = True
+				pass
+	class Meta:
+		model = Tbl2Evolucion
 
-	fecha = forms.DateField(widget=forms.DateInput(format=('%d-%m-%Y'),attrs={'class':'form-control','rows':'3'}))
-	hora = forms.DateField(widget=forms.DateInput(format=('%d-%m-%Y'),attrs={'class':'form-control','rows':'3'}))
-	patologias = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
+class FrmRevision(ModelForm):
+	"""Formulario de llenado de notas"""
+	def __init__(self, *args, **kwargs):
+		super(FrmRevision, self).__init__(*args, **kwargs)
+		for myField in self.fields:
+			self.fields[myField].widget.attrs['class'] = 'form-control'
+			if myField == 'nss':
+				self.fields[myField].widget.attrs['readonly'] = True
+				pass
 
 	class Meta:
-		model = Tbl2Nota
+		model = Tbl2Revision
 
 class FrmIngreso(ModelForm):
 	"""Formulario de llenado de notas"""
@@ -127,9 +140,6 @@ class FrmIngreso(ModelForm):
 
 	# Input compuesto
 	antecedentes_personales_patologicos = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
-	#antecedentes_personales_patologicos.widget.attrs['class']='form-control'
-	#antecedentes_personales_patologicos.widget.attrs['readonly']=True
-	#antecedentes_personales_patologicos.widget.attrs['placeholder']='Click para abrir la captura'
 
 	padecimiento_actual = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
 
@@ -159,33 +169,18 @@ class FrmIngreso(ModelForm):
 
 	# Input compuesto
 	laboratorio = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
-	#laboratorio.widget.attrs['class']='form-control'
-	#laboratorio.widget.attrs['readonly']=True
-	#laboratorio.widget.attrs['placeholder']='Click para abrir la captura'
 
 	# Input compuesto
 	gabinete = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
-	#gabinete.widget.attrs['class']='form-control'
-	#gabinete.widget.attrs['readonly']=True
-	#gabinete.widget.attrs['placeholder']='Click para abrir la captura'
 
 	# Input compuesto
 	diagnostico_sindromaticos = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
-	#diagnostico_sindromaticos.widget.attrs['class']='form-control'
-	#diagnostico_sindromaticos.widget.attrs['readonly']=True
-	#diagnostico_sindromaticos.widget.attrs['placeholder']='Click para abrir la captura'
 
 	# Input compuesto
 	diagnostico_nosologico = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
-	#diagnostico_nosologico.widget.attrs['class']='form-control'
-	#diagnostico_nosologico.widget.attrs['readonly']=True
-	#diagnostico_nosologico.widget.attrs['placeholder']='Click para abrir la captura'
 
 	# Input compuesto
 	diagnostico_diferencial = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control','readonly':True}))
-	#diagnostico_diferencial.widget.attrs['class']='form-control'
-	#diagnostico_diferencial.widget.attrs['readonly']=True
-	#diagnostico_diferencial.widget.attrs['placeholder']='Click para abrir la captura'
 
 	apache = forms.CharField()
 	apache.widget.attrs['class']='form-control'

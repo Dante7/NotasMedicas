@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+
+{% block captura  %}
+<script type="text/javascript">
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip({
+	        placement : 'top'
+	    });
+	});
+</script>
+	<h2 class="bg-primary">Revisión</h2>
+	<form action="" class="form-horizontal" role="form" method="post" id="captura">{% csrf_token %}
+		<table class="table table-condensed">
+			{% for campo in form  %}
+				<tr>
+					<td>{{campo.label}}</td>
+					<td>
+						{{campo}}
+					</td>
+					{% if campo.errors %}
+						<td>
+							<a href="#" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" class="error">
+								<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" aria-hidden="true"></span>
+							</a>
+						</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</table>
+		<input class="btn btn-primary" type="submit" value="Guardar">
+	</form>
+
+	<div class="modal fade col-md-12" tabindex="-1" id="MyModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-condensed" id="tblModal">
+						<thead>
+							<tr>
+								<th id="EncabezadoTipo"></th>
+								<th>Comentario</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+					<button type="button" class="btn btn-default btn-xs" id="addRow">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						Agregar fila
+					</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="cancel">Cancelar</button>
+					<button type="button" class="btn btn-primary" id="save">Guardar cambios</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+{% endblock %}

@@ -8,7 +8,7 @@
 	    });
 	});
 </script>
-	<h2 class="bg-primary">Evolucion y gravedad</h2>
+	<h2 class="bg-primary">Evolucion</h2>
 	<form action="" class="form-horizontal" role="form" method="post" id="captura">{% csrf_token %}
 		<table class="table table-condensed">
 			{% for campo in form  %}
@@ -16,15 +16,6 @@
 					<td>{{campo.label}}</td>
 					<td>
 						{{campo}}
-						{% if campo.field.widget.attrs.readonly %}
-							<div id="slot_{{campo.name}}" class="col-sm-2 col-md-7 items"></div>
-							<button type="button" class="btn btn-success " data-toggle="modal" data-target="#MyModal" id="btnModalCap" data-whatever="{{campo.label}}">
-								Captura
-							</button>
-							<button type="button" class="btn btn-success " data-toggle="modal" data-target="#MyModal" id="btnModalShow" data-whatever="{{campo.label}}">
-								Visualizar
-							</button>
-						{% endif %}
 					</td>
 					{% if campo.errors %}
 						<td>

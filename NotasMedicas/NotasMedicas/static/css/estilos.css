@@ -1,6 +1,6 @@
 body
 {
-	margin: 1em 1em 0 1em;
+	margin: 0 1em 0 1em;
 
 }
 
@@ -138,13 +138,14 @@ form
 
 #sidebar-wrapper {
     z-index: 1000;
+    border-radius: 5px;
     position: fixed;
     left: 300px;
     width: 0;
     height: 100%;
     margin-left: -300px;
     overflow-y: auto;
-    background: #000;
+    background: #428bca;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -185,7 +186,7 @@ form
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #fff;
 }
 
 .sidebar-nav li a:hover {

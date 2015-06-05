@@ -7,13 +7,15 @@
 		var availableTags = {{nombres|safe}};
 
 		$( "#nombre" ).autocomplete({
-			source: availableTags
+			source: availableTags,
+			sortResults: true
 		});
 	});
 </script>
 	<h2 class="bg-primary">Camas</h2>
 
 	<form action="" class="form-inline busqueda">
+
 		<div class="row">
 			<div  class="form-group col-sm-12 col-xs-12 col-lg-3">
 				<label for="nombre">Nombre</label>
@@ -26,6 +28,7 @@
 			<div class="form-group col-sm-12 col-xs-12 col-lg-2">
 				<a href="#" class="btn btn-primary" id="BedSearch">Buscar</a>
 			</div>
+			<p>Camas ocupadas: {{n}}</p>
 		</div>
 	</form>
 	

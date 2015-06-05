@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime
+from django.utils import timezone
 
 # Create your models here.
 
@@ -15,8 +17,9 @@ class Cie10(models.Model):
         db_table = u'cie_10'
 
 class EstructuraEch(models.Model):
-    id = models.IntegerField(primary_key=True)
+    #id = models.IntegerField(primary_key=True)
     descripcion = models.CharField(max_length=750)
+    url = models.CharField(max_length=750)
     class Meta:
         db_table = u'estructura_ech'
 
@@ -38,15 +41,59 @@ class Tbl1Paciente(models.Model):
     class Meta:
         db_table = u'tbl1_paciente'
 
-class Tbl2Nota(models.Model):
-    #id = models.IntegerField(unique=True, primary_key=True)
-    #id_tbl1 = models.ForeignKey(Tbl1Paciente, db_column='id_tbl1')
-    fecha = models.DateTimeField()
-    hora = models.DateTimeField()
-    patologias = models.CharField(max_length=135)
-
+class Tbl2Evolucion(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=135)
+    fecha = models.DateField(auto_now_add=True)
+    hora = models.DateTimeField(auto_now_add=True)
+    fc = models.CharField(max_length=750)
+    fr = models.CharField(max_length=750)
+    ta = models.CharField(max_length=750)
+    temperatura = models.CharField(max_length=750)
+    dextrostix = models.CharField(max_length=750, blank=True)
+    balance_hidrico = models.CharField(max_length=750, blank=True)
+    urecis = models.CharField(max_length=750, blank=True)
+    pcb = models.CharField(max_length=750, blank=True)
+    modo_ventilatorio = models.CharField(max_length=750, blank=True)
+    nc = models.CharField(max_length=750, blank=True)
+    fr_mv = models.CharField(max_length=750, blank=True)
+    peep = models.CharField(max_length=750, blank=True)
+    fo2 = models.CharField(max_length=750, blank=True)
+    ps = models.CharField(max_length=750, blank=True)
+    sencibilidad = models.CharField(max_length=750, blank=True)
+    reultados_relvantes = models.CharField(max_length=750, blank=True)
+    diagnostico = models.CharField(max_length=750, blank=True)
+    pronostico = models.CharField(max_length=750, blank=True)
+    tratamiento = models.CharField(max_length=750, blank=True)
     class Meta:
-        db_table = u'tbl2_nota'
+        db_table = u'tbl2_evolucion'
+
+class Tbl2Revision(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=135)
+    fecha = models.DateField()
+    hora = models.DateTimeField()
+    fc = models.CharField(max_length=750)
+    fr = models.CharField(max_length=750)
+    ta = models.CharField(max_length=750)
+    temperatura = models.CharField(max_length=750)
+    dextrostix = models.CharField(max_length=750, blank=True)
+    balance_hidrico = models.CharField(max_length=750, blank=True)
+    urecis = models.CharField(max_length=750, blank=True)
+    pcb = models.CharField(max_length=750, blank=True)
+    modo_ventilatorio = models.CharField(max_length=750, blank=True)
+    nc = models.CharField(max_length=750, blank=True)
+    fr_mv = models.CharField(max_length=750, blank=True)
+    peep = models.CharField(max_length=750, blank=True)
+    fo2 = models.CharField(max_length=750, blank=True)
+    ps = models.CharField(max_length=750, blank=True)
+    sencibilidad = models.CharField(max_length=750, blank=True)
+    reultados_relvantes = models.CharField(max_length=750, blank=True)
+    diagnostico = models.CharField(max_length=750, blank=True)
+    pronostico = models.CharField(max_length=750, blank=True)
+    tratamiento = models.CharField(max_length=750, blank=True)
+    class Meta:
+        db_table = u'tbl2_revision'
 
 class Tbl3Ingreso(models.Model):
     """docstring for Tbl3ingreso"""
@@ -84,5 +131,6 @@ class CamaPaciente(models.Model):
     nss = models.CharField(max_length=405, blank=True)
     nombre = models.CharField(max_length=405, blank=True)
     status = models.CharField(max_length=405, blank=True)
+    pronostico = models.CharField(max_length=405, blank=True)
     class Meta:
         db_table = u'cama_paciente'

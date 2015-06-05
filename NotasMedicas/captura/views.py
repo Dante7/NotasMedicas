@@ -49,6 +49,7 @@ def Formatos(request, nss):
 	template = 'menu.html'
 	datos = EstructuraEch.objects.all()
 	paciente = Tbl1Paciente.objects.filter(nss=nss)
+	paciente = Tbl1Paciente.objects.filter(nss=nss)
 	resultado = {'datos':datos, 'paciente':paciente}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -63,49 +64,76 @@ def Camas(request):
 	nombres = []
 	seccion = CamaPaciente.objects.order_by().values('seccion').distinct()
 	camas = CamaPaciente.objects.all()
-	for row in camas:
+	nom = CamaPaciente.objects.filter(nss__isnull=False).order_by('nombre')
+	for row in nom:
 		nombres.append(row.nombre)
 		pass
 	#print nombres
-	resultado = {'seccion':seccion, 'camas':camas, 'nombres':nombres}
+	n = CamaPaciente.objects.filter(nss__isnull=False).count()
+	resultado = {'seccion':seccion, 'camas':camas, 'nombres':nombres, 'n':n}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
-def CapPaciente(request,folio=''):
+def CapPaciente(request,nss):
 	template = 'paciente.html'
 	if request.method=='POST':
 		formulario = FrmPaciente(request.POST)
+		formulario.fields["nss"].initial = nss
 		if formulario.is_valid():
 			formulario.save()
 			resultado = {'form':formulario}
-			return HttpResponseRedirect('/ingreso')
+			return HttpResponseRedirect('/formatos/'+nss)
 		else:
 			resultado = {'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		formulario = FrmPaciente()
+		formulario.fields["nss"].initial = nss
 		pass
 		resultado = {'form':formulario}
 	
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
-def CapNota(request,folio=''):
-	template = 'evo_grav.html'
+def CapEvolucion(request,nss):
+	template = 'evo.html'
 	if request.method=='POST':
-		formulario = FrmNota(request.POST)
+		formulario = FrmEvolucion(request.POST)
+		formulario.fields["nss"].initial = nss
 		if formulario.is_valid():
 			formulario.save()
-			resultado = {'form':formulario, 'folio': request.session['folio'], 'espe': request.session['espe']}
+			resultado = {'form':formulario, 'folio': request.session['folio']}
 		else:
 			resultado = {'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmNota()
+		formulario = FrmEvolucion()
+		formulario.fields["nss"].initial = nss
 		pass
 		resultado = {'form':formulario}
 	
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def CapRevision(request,nss):
+	template = 'rev.html'
+	if request.method=='POST':
+		formulario = FrmRevision(request.POST)
+		formulario.fields["nss"].initial = nss
+		if formulario.is_valid():
+			formulario.save()
+			resultado = {'form':formulario, 'folio': request.session['folio']}
+		else:
+			resultado = {'form':formulario}
+		return render_to_response(template, resultado, context_instance=RequestContext(request))
+	else:
+		formulario = FrmRevision()
+		formulario.fields["nss"].initial = nss
+		pass
+		resultado = {'form':formulario}
+	
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
 
 @login_required(login_url='/')
 def CapIngreso(request,folio=''):
@@ -116,7 +144,7 @@ def CapIngreso(request,folio=''):
 		formulario = FrmIngreso(request.POST)
 		if formulario.is_valid():
 			formulario.save()
-			resultado = {'data':data, 'cat':cat, 'form':formulario, 'folio': request.session['folio'], 'espe': request.session['espe']}
+			resultado = {'data':data, 'cat':cat, 'form':formulario, 'folio': request.session['folio']}
 		else:
 			resultado = {'data':data, 'cat':cat, 'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))

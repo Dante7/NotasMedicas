@@ -4,12 +4,20 @@
 {% block captura  %}
 
 <div class="row">
-	<h2 class="bg-primary">
-		Menu de notas 
-		<a href="#menu-toggle"  class="btn btn-primary btn-lg hidden-lg hidden-md">
-			<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
-		</a>
-	</h2>
+	<h3>
+		{% if paciente %}
+			{% for item in paciente %}
+				<span class="label label-primary">{{item.nombre}} </span> &nbsp;
+				<span class="label label-primary">{{item.cama}} </span> &nbsp;
+				<a href="#menu-toggle"  class="label label-primary hidden-lg hidden-md">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				</a>
+			{% endfor %}
+ 		{% else %}
+ 			<a href="../../paciente" class="btn btn-primary">Capturar nuevo paciente</a>
+		{% endif %}
+	</h3>
+
 </div>
 
  <div id="wrapper">
@@ -33,33 +41,9 @@
                     <div class="tab-content">
 						{% for nota in datos %}
 							<div role="tabpanel" class="tab-pane col-sm-12 col-lg-9" id="{{nota.id}}">
-								{% if paciente %}
-									{% if nota.descripcion == 'Hoja frontal' %}
-										<table class="table table-striped">
-											{% for item in paciente %}
-												<tr>
-													<td><h4>Nombre:</h4></td>
-													<td><h4>{{item.nombre}}</h4></td>
-													
-												</tr>
-												<tr>
-													<td><h4>Edad:</h4></td>
-													<td><h4>{{item.edad}} años</h4></td>
-												</tr>
-												<tr>
-													<td><h4>Numero de afiliacion:</h4></td>
-													<td><h4>{{item.nss}}</h4></td>
-												</tr>
-												<tr>
-													<td><h4>Cama:</h4></td>
-													<td><h4>{{item.cama}}</h4></td>
-												</tr>
-											{% endfor %}
-										</table>
-									{% endif %}
-								{% else %}
-									<a href="../../paciente" class="btn btn-primary">Capturar nota</a>
-								{% endif %}
+								{% for item in paciente %}
+									<a href="../../{{nota.url}}/{{item.nss}}" class="btn btn-primary">capturar {{nota.descripcion}}</a>
+								{% endfor %}
 							</div>	
 						{% endfor %}
 					</div>
