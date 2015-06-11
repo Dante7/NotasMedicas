@@ -64,8 +64,8 @@ function GuardaJson (name) {
 
 $( document ).ready(function() {
 
-    //busqueda de camas
-    $("#BedSearch").click(function () {
+    //busqueda de camas con boton
+    /*$("#BedSearch").click(function () {
         var valor = $('#nombre').val();
         console.log(valor);
         var seccion = $(".panel-collapse");
@@ -83,7 +83,48 @@ $( document ).ready(function() {
                 $(this).addClass('disabled');
             };
         });
+    });*/
+    //busqueda de camas sin boton
+    $("#nombre").keyup(function () {
+        var valor = $('#nombre').val();
+        var seccion = $(".panel-collapse");
+        seccion.each(function() {
+            $(this).collapse('show');
+        });
+        console.log(valor);
+        var botones = $(".camas");
+        botones.each(function () {
+            var nombre = $(this).attr('name').trim();
+            var n = nombre.indexOf(valor);
+            if ( n != -1) 
+            {
+                $(this).show();
+            }else{
+                $(this).hide();
+            };
+        });
     });
+
+    $("#nombre").keyup(function () {
+        var valor = $('#nombre').val();
+        var seccion = $(".panel-collapse");
+        seccion.each(function() {
+            $(this).collapse('show');
+        });
+        console.log(valor);
+        var botones = $(".camas");
+        botones.each(function () {
+            var nombre = $(this).attr('name').trim();
+            var n = nombre.indexOf(valor);
+            if ( n != -1) 
+            {
+                $(this).show();
+            }else{
+                $(this).hide();
+            };
+        });
+    });
+
 
 
     $("#btnModalCap").click(function () {
@@ -124,7 +165,7 @@ $( document ).ready(function() {
     //Apache modules
     //Declaracion de arrays
 
-    var array = {
+    /*var array = {
         'tr':[{
             're_4':[
                 {
@@ -854,7 +895,7 @@ $( document ).ready(function() {
             ]
         }]
     };
-
+    
 
     function validaRango (nombre, valor) {
         // body...
@@ -888,5 +929,6 @@ $( document ).ready(function() {
             };
         };
     });
+    */
 
 });

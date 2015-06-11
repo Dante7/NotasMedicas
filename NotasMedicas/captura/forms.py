@@ -120,6 +120,7 @@ class FrmEvolucion(ModelForm):
 
 class FrmRevision(ModelForm):
 	"""Formulario de llenado de notas"""
+	#fecha = forms.DateField(widget=forms.DateInput(attrs={'class':'form-control'}), input_formats=input_formats)
 	def __init__(self, *args, **kwargs):
 		super(FrmRevision, self).__init__(*args, **kwargs)
 		for myField in self.fields:

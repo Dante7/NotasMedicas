@@ -50,6 +50,7 @@ def Formatos(request, nss):
 	datos = EstructuraEch.objects.all()
 	paciente = Tbl1Paciente.objects.filter(nss=nss)
 	paciente = Tbl1Paciente.objects.filter(nss=nss)
+	paciente = Tbl1Paciente.objects.filter(nss=nss)
 	resultado = {'datos':datos, 'paciente':paciente}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -66,7 +67,8 @@ def Camas(request):
 	camas = CamaPaciente.objects.all()
 	nom = CamaPaciente.objects.filter(nss__isnull=False).order_by('nombre')
 	for row in nom:
-		nombres.append(row.nombre)
+		nombre = row.nombre
+		nombres.append(nombre)
 		pass
 	#print nombres
 	n = CamaPaciente.objects.filter(nss__isnull=False).count()
@@ -102,7 +104,8 @@ def CapEvolucion(request,nss):
 		formulario.fields["nss"].initial = nss
 		if formulario.is_valid():
 			formulario.save()
-			resultado = {'form':formulario, 'folio': request.session['folio']}
+			resultado = {'form':formulario}
+			return HttpResponseRedirect('/formatos/'+nss)
 		else:
 			resultado = {'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
@@ -122,7 +125,8 @@ def CapRevision(request,nss):
 		formulario.fields["nss"].initial = nss
 		if formulario.is_valid():
 			formulario.save()
-			resultado = {'form':formulario, 'folio': request.session['folio']}
+			resultado = {'form':formulario}
+			return HttpResponseRedirect('/formatos/'+nss)
 		else:
 			resultado = {'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))

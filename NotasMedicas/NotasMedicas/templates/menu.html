@@ -4,12 +4,12 @@
 {% block captura  %}
 
 <div class="row">
-	<h3>
+	<h3 class="bg-primary">
 		{% if paciente %}
 			{% for item in paciente %}
-				<span class="label label-primary">{{item.nombre}} </span> &nbsp;
-				<span class="label label-primary">{{item.cama}} </span> &nbsp;
-				<a href="#menu-toggle"  class="label label-primary hidden-lg hidden-md">
+				{{item.nombre}}  &nbsp;
+				{{item.cama}}  &nbsp;
+				<a href="#menu-toggle"  class="btn btn-info btn-sm hidden-lg hidden-md">
 					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 				</a>
 			{% endfor %}
