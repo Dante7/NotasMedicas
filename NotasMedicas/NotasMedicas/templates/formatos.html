@@ -5,8 +5,8 @@
 
 <div class="row">
 	<h3 class="bg-primary">
-		{% if paciente %}
-			{% for item in paciente %}
+		{% if ingreso %}
+			{% for item in ingreso %}
 				{{item.nombre}}  &nbsp;
 				{{item.cama}}  &nbsp;
 				<a href="#menu-toggle"  class="btn btn-info btn-sm hidden-lg hidden-md lan">
@@ -14,7 +14,7 @@
 				</a>
 			{% endfor %}
  		{% else %}
- 			<a href="../../paciente" class="btn btn-primary">Capturar nuevo paciente</a>
+ 			<!-- <a href="../../paciente" class="btn btn-primary">Capturar nuevo paciente</a> -->
 		{% endif %}
 	</h3>
 

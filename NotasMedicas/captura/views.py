@@ -46,13 +46,12 @@ def Login(request):
 
 @login_required(login_url='/')
 def Formatos(request, nss):
-	template = 'menu.html'
+	template = 'formatos.html'
 	datos = EstructuraEch.objects.all()
-	paciente = Tbl1Paciente.objects.filter(nss=nss)
-	ingreso = Tbl1Paciente.objects.filter(nss=nss)
-	rev = Tbl1Paciente.objects.filter(nss=nss)
-	evo = Tbl1Paciente.objects.filter(nss=nss)
-	resultado = {'datos':datos, 'paciente':paciente}
+	ingreso = IngresoIdentificacion.objects.filter(nss=nss)
+	rev = Tbl2Revision.objects.filter(nss=nss)
+	evo = Tbl2Evolucion.objects.filter(nss=nss)
+	resultado = {'datos':datos, 'ingreso':ingreso}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
@@ -77,10 +76,115 @@ def Camas(request):
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
-def CapPaciente(request,nss):
-	template = 'paciente.html'
+def CapIdentificacion(request,nss):
+	template = 'ingreso.html'
 	if request.method=='POST':
-		formulario = FrmPaciente(request.POST)
+		formulario = FrmIngresoIdentificacion(request.POST)
+		formulario.fields["nss"].initial = nss
+		if formulario.is_valid():
+			formulario.save()
+			resultado = {'form':formulario}
+			return HttpResponseRedirect('/antecedentes/'+nss)
+		else:
+			resultado = {'form':formulario}
+		return render_to_response(template, resultado, context_instance=RequestContext(request))
+	else:
+		formulario = FrmIngresoIdentificacion()
+		formulario.fields["nss"].initial = nss
+		pass
+		resultado = {'form':formulario}
+	
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def CapAnt(request,nss):
+	template = 'ingreso.html'
+	if request.method=='POST':
+		formulario = FrmIngresoAnt(request.POST)
+		formulario.fields["nss"].initial = nss
+		if formulario.is_valid():
+			formulario.save()
+			resultado = {'form':formulario}
+			return HttpResponseRedirect('/patologia/'+nss)
+		else:
+			resultado = {'form':formulario}
+		return render_to_response(template, resultado, context_instance=RequestContext(request))
+	else:
+		formulario = FrmIngresoAnt()
+		formulario.fields["nss"].initial = nss
+		pass
+		resultado = {'form':formulario}
+	
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def CapPatologia(request,nss):
+	template = 'ingreso.html'
+	if request.method=='POST':
+		formulario = FrmIngresoPatologia(request.POST)
+		formulario.fields["nss"].initial = nss
+		if formulario.is_valid():
+			formulario.save()
+			resultado = {'form':formulario}
+			return HttpResponseRedirect('/exploracion/'+nss)
+		else:
+			resultado = {'form':formulario}
+		return render_to_response(template, resultado, context_instance=RequestContext(request))
+	else:
+		formulario = FrmIngresoPatologia()
+		formulario.fields["nss"].initial = nss
+		pass
+		resultado = {'form':formulario}
+	
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def CapExploracion(request,nss):
+	template = 'ingreso.html'
+	if request.method=='POST':
+		formulario = FrmIngresoExploracion(request.POST)
+		formulario.fields["nss"].initial = nss
+		if formulario.is_valid():
+			formulario.save()
+			resultado = {'form':formulario}
+			return HttpResponseRedirect('/labgab/'+nss)
+		else:
+			resultado = {'form':formulario}
+		return render_to_response(template, resultado, context_instance=RequestContext(request))
+	else:
+		formulario = FrmIngresoExploracion()
+		formulario.fields["nss"].initial = nss
+		pass
+		resultado = {'form':formulario}
+	
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def CapLabGAb(request,nss):
+	template = 'ingreso.html'
+	if request.method=='POST':
+		formulario = FrmIngresoLabGAb(request.POST)
+		formulario.fields["nss"].initial = nss
+		if formulario.is_valid():
+			formulario.save()
+			resultado = {'form':formulario}
+			return HttpResponseRedirect('/diagnostico/'+nss)
+		else:
+			resultado = {'form':formulario}
+		return render_to_response(template, resultado, context_instance=RequestContext(request))
+	else:
+		formulario = FrmIngresoLabGAb()
+		formulario.fields["nss"].initial = nss
+		pass
+		resultado = {'form':formulario}
+	
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def CapDiag(request,nss):
+	template = 'ingreso.html'
+	if request.method=='POST':
+		formulario = FrmIngresoDiag(request.POST)
 		formulario.fields["nss"].initial = nss
 		if formulario.is_valid():
 			formulario.save()
@@ -90,7 +194,7 @@ def CapPaciente(request,nss):
 			resultado = {'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmPaciente()
+		formulario = FrmIngresoDiag()
 		formulario.fields["nss"].initial = nss
 		pass
 		resultado = {'form':formulario}
@@ -136,26 +240,5 @@ def CapRevision(request,nss):
 		formulario.fields["nss"].initial = nss
 		pass
 		resultado = {'form':formulario}
-	
-	return render_to_response(template, resultado, context_instance=RequestContext(request))
-
-
-@login_required(login_url='/')
-def CapIngreso(request,folio=''):
-	template = 'ingreso.html'
-	data = Tbl1Paciente.objects.all()
-	cat = Cie10.objects.all()
-	if request.method=='POST':
-		formulario = FrmIngreso(request.POST)
-		if formulario.is_valid():
-			formulario.save()
-			resultado = {'data':data, 'cat':cat, 'form':formulario, 'folio': request.session['folio']}
-		else:
-			resultado = {'data':data, 'cat':cat, 'form':formulario}
-		return render_to_response(template, resultado, context_instance=RequestContext(request))
-	else:
-		formulario = FrmIngreso()
-		pass
-		resultado = {'data':data, 'cat':cat, 'form':formulario}
 	
 	return render_to_response(template, resultado, context_instance=RequestContext(request))

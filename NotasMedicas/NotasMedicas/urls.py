@@ -13,9 +13,17 @@ urlpatterns = patterns('',
     url(r'^camas/', 'captura.views.Camas'),
     url(r'^formatos/(?P<nss>\w+)/$', 'captura.views.Formatos'),
 
-    url(r'^apache/', 'captura.views.Apache'),
+    #url(r'^apache/', 'captura.views.Apache'),
 
-    url(r'^ingreso/', 'captura.views.CapIngreso'),
+    #Inician url's de ingreso
+    url(r'^identificacion/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
+    url(r'^antecedentes/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
+    url(r'^patologia/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
+    url(r'^exploracion/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
+    url(r'^labgab/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
+    url(r'^diagnostico/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
+    #Terminan url's de ingreso
+
     url(r'^evolucion/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
     url(r'^revision/(?P<nss>\w+)/$', 'captura.views.CapRevision'),
     url(r'^alta/', 'captura.views.CapAlta'),

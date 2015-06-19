@@ -23,8 +23,7 @@ class EstructuraEch(models.Model):
     class Meta:
         db_table = u'estructura_ech'
 
-class Tbl1Paciente(models.Model):
-    #id = models.IntegerField(unique=True, primary_key=True)
+class IngresoIdentificacion(models.Model):
     nss = models.CharField(max_length=135)
     nombre = models.CharField(max_length=135)
     edad = models.IntegerField()
@@ -36,10 +35,65 @@ class Tbl1Paciente(models.Model):
     ocupacion = models.CharField(max_length=135)
     estado_civil = models.CharField(max_length=135)
     tipo_interrogatorio = models.CharField(max_length=135)
-    status = models.CharField(max_length=135, null=True, blank=True, default="Alta")
+    status = models.CharField(max_length=135, null=True, blank=True, default="Ingresado")
     cama = models.CharField(max_length=135)
     class Meta:
-        db_table = u'tbl1_paciente'
+        db_table = u'Ingreso_Identificacion'
+
+class IngresoAnt(models.Model):
+    """docstring for Tbl3ingreso"""
+    nss = models.CharField(max_length=135)
+    antecedentes_heredofamiliares = models.CharField(max_length=135)
+    antecedentes_personales_no_patologicos = models.CharField(max_length=135)
+    antecedentes_personales_patologicos = models.CharField(max_length=135)
+
+    class Meta:
+        db_table = u'Ingreso_Antecedentes'
+
+class IngresoPatologia(models.Model):
+    """docstring for Tbl3ingreso"""
+    nss = models.CharField(max_length=135)
+    antecedentes_personales_patologicos = models.CharField(max_length=135)
+
+    class Meta:
+        db_table = u'Ingreso_Antecedentes_patologicos'
+
+class IngresoExploracion(models.Model):
+    """docstring for Tbl3ingreso"""
+    nss = models.CharField(max_length=135)
+    padecimiento_actual = models.CharField(max_length=135)
+    ta = models.CharField(max_length=135)
+    fc = models.CharField(max_length=135)
+    fr = models.CharField(max_length=135)
+    temp = models.CharField(max_length=135)
+    sat = models.CharField(max_length=135)
+    peso = models.CharField(max_length=135)
+    talla = models.CharField(max_length=135)
+    imc = models.CharField(max_length=135)
+
+    class Meta:
+        db_table = u'Ingreso_Exploracion'
+
+class IngresoLabGAb(models.Model):
+    """docstring for Tbl3ingreso"""
+    nss = models.CharField(max_length=135)
+    laboratorio = models.CharField(max_length=135)
+    gabinete = models.CharField(max_length=135)
+
+    class Meta:
+        db_table = u'Ingreso_Laboratorio_Gabinete'
+
+class IngresoDiag(models.Model):
+    """docstring for Tbl3ingreso"""
+    nss = models.CharField(max_length=135)
+    diagnostico_sindromaticos = models.CharField(max_length=135)
+    diagnostico_nosologico = models.CharField(max_length=135)
+    diagnostico_diferencial = models.CharField(max_length=135)
+    apache = models.CharField(max_length=135)
+    plan_comentario = models.CharField(max_length=135)
+
+    class Meta:
+        db_table = u'Ingreso_Diagnostico'
 
 class Tbl2Evolucion(models.Model):
     #id = models.IntegerField(primary_key=True)
@@ -71,8 +125,8 @@ class Tbl2Evolucion(models.Model):
 class Tbl2Revision(models.Model):
     #id = models.IntegerField(primary_key=True)
     nss = models.CharField(max_length=135)
-    fecha = models.DateField()
-    hora = models.DateTimeField()
+    fecha = models.DateField(auto_now_add=True)
+    hora = models.DateTimeField(auto_now_add=True)
     fc = models.CharField(max_length=750)
     fr = models.CharField(max_length=750)
     ta = models.CharField(max_length=750)
@@ -94,33 +148,6 @@ class Tbl2Revision(models.Model):
     tratamiento = models.CharField(max_length=750, blank=True)
     class Meta:
         db_table = u'tbl2_revision'
-
-class Tbl3Ingreso(models.Model):
-    """docstring for Tbl3ingreso"""
-    #id = models.IntegerField(unique=True, primary_key=True)
-    #id_tbl1 = models.ForeignKey(Tbl1Paciente, db_column='id_tbl1')
-    antecedentes_heredofamiliares = models.CharField(max_length=135)
-    antecedentes_personales_no_patologicos = models.CharField(max_length=135)
-    antecedentes_personales_patologicos = models.CharField(max_length=135)
-    padecimiento_actual = models.CharField(max_length=135)
-    ta = models.CharField(max_length=135)
-    fc = models.CharField(max_length=135)
-    fr = models.CharField(max_length=135)
-    temp = models.CharField(max_length=135)
-    sat = models.CharField(max_length=135)
-    peso = models.CharField(max_length=135)
-    talla = models.CharField(max_length=135)
-    imc = models.CharField(max_length=135)
-    laboratorio = models.CharField(max_length=135)
-    gabinete = models.CharField(max_length=135)
-    diagnostico_sindromaticos = models.CharField(max_length=135)
-    diagnostico_nosologico = models.CharField(max_length=135)
-    diagnostico_diferencial = models.CharField(max_length=135)
-    apache = models.CharField(max_length=135)
-    plan_comentario = models.CharField(max_length=135)
-
-    class Meta:
-        db_table = u'tbl3_ingreso'
 
 class Tbl4Inter(models.Model):
     #id = models.IntegerField(primary_key=True)
