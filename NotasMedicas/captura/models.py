@@ -122,6 +122,42 @@ class Tbl3Ingreso(models.Model):
     class Meta:
         db_table = u'tbl3_ingreso'
 
+class Tbl4Inter(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    prioridad = models.CharField(max_length=750)
+    calidad = models.CharField(max_length=750)
+    atendido_por = models.CharField(max_length=750)
+    enviado_por = models.CharField(max_length=750)
+    fecha = models.DateField()
+    nss = models.CharField(max_length=750)
+    class Meta:
+        db_table = u'tbl4_inter'
+
+class Tbl5Preop(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=750)
+    class Meta:
+        db_table = u'tbl5_preop'
+
+class Tbl6Egreso(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    fecha_ingreso = models.DateField()
+    fecha_egreso = models.DateField()
+    motivo_egreso = models.CharField(max_length=750)
+    diag_final = models.TextField()
+    resumen_evolucion = models.TextField()
+    estado_actual = models.TextField()
+    manejo_estancia = models.TextField()
+    problemas_pendientes = models.TextField()
+    plan_manejo = models.TextField()
+    tratamiento = models.TextField()
+    recomendaciones = models.TextField()
+    atencion_factores_riesgo = models.TextField()
+    pronostico = models.TextField()
+    causa_defuncion = models.TextField()
+    nss = models.CharField(max_length=765)
+    class Meta:
+        db_table = u'tbl6_egreso'
 
 
 #Vista generada desde mysql

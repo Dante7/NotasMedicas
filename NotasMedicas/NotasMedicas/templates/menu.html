@@ -9,7 +9,7 @@
 			{% for item in paciente %}
 				{{item.nombre}}  &nbsp;
 				{{item.cama}}  &nbsp;
-				<a href="#menu-toggle"  class="btn btn-info btn-sm hidden-lg hidden-md">
+				<a href="#menu-toggle"  class="btn btn-info btn-sm hidden-lg hidden-md lan">
 					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 				</a>
 			{% endfor %}
@@ -21,13 +21,12 @@
 </div>
 
  <div id="wrapper">
-
         <!-- Sidebar -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
 					{% for nota in datos %}
 						<li role="presentation">
-							<a href="#{{nota.id}}" aria-controls="{{nota.id}}" role="tab" data-toggle="tab">{{nota.descripcion}}</a>
+							<a href="#{{nota.id}}" aria-controls="{{nota.id}}" role="tab" data-toggle="tab" class="lan">{{nota.descripcion}}</a>
 						</li>	
 					{% endfor %}
 				</ul>
@@ -42,7 +41,7 @@
 						{% for nota in datos %}
 							<div role="tabpanel" class="tab-pane col-sm-12 col-lg-9" id="{{nota.id}}">
 								{% for item in paciente %}
-									<a href="../../{{nota.url}}/{{item.nss}}" class="btn btn-primary">capturar {{nota.descripcion}}</a>
+									<a href="../../{{nota.url}}/{{item.nss}}" class="btn btn-primary">Capturar {{nota.descripcion}}</a>
 								{% endfor %}
 							</div>	
 						{% endfor %}
@@ -58,7 +57,7 @@
 		$(function () {
 			$('#myTab a:last').tab('show')
 		});
-	    $("a").click(function(e) {
+	    $("a.lan").click(function(e) {
 	        if ($(window).width() < 993) {
 	        	e.preventDefault();
 	        	$("#wrapper").toggleClass("toggled");

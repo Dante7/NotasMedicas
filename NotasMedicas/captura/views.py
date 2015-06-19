@@ -49,8 +49,9 @@ def Formatos(request, nss):
 	template = 'menu.html'
 	datos = EstructuraEch.objects.all()
 	paciente = Tbl1Paciente.objects.filter(nss=nss)
-	paciente = Tbl1Paciente.objects.filter(nss=nss)
-	paciente = Tbl1Paciente.objects.filter(nss=nss)
+	ingreso = Tbl1Paciente.objects.filter(nss=nss)
+	rev = Tbl1Paciente.objects.filter(nss=nss)
+	evo = Tbl1Paciente.objects.filter(nss=nss)
 	resultado = {'datos':datos, 'paciente':paciente}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
