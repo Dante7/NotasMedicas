@@ -11,17 +11,17 @@ urlpatterns = patterns('',
 
     url(r'^$', 'captura.views.Login'),
     url(r'^camas/', 'captura.views.Camas'),
-    url(r'^formatos/(?P<nss>\w+)/$', 'captura.views.Formatos'),
+    url(r'^formatos/(?P<nss>\w+)/(?P<cama>\w+)/$', 'captura.views.Formatos'),
 
     #url(r'^apache/', 'captura.views.Apache'),
 
     #Inician url's de ingreso
-    url(r'^identificacion/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
-    url(r'^antecedentes/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
-    url(r'^patologia/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
-    url(r'^exploracion/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
-    url(r'^labgab/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
-    url(r'^diagnostico/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
+    url(r'^identificacion/(?P<cama>\w+)/$', 'captura.views.CapIdentificacion'),
+    url(r'^antecedentes/(?P<nss>\w+)/$', 'captura.views.CapAnt'),
+    url(r'^patologia/(?P<nss>\w+)/$', 'captura.views.CapPatologia'),
+    url(r'^exploracion/(?P<nss>\w+)/$', 'captura.views.CapExploracion'),
+    url(r'^labgab/(?P<nss>\w+)/$', 'captura.views.CapLabGAb'),
+    url(r'^diagnostico/(?P<nss>\w+)/$', 'captura.views.CapDiag'),
     #Terminan url's de ingreso
 
     url(r'^evolucion/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),

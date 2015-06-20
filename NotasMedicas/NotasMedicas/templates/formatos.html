@@ -14,7 +14,7 @@
 				</a>
 			{% endfor %}
  		{% else %}
- 			<!-- <a href="../../paciente" class="btn btn-primary">Capturar nuevo paciente</a> -->
+ 			<a href="../../../identificacion/{{cama}}" class="btn btn-primary">Capturar nuevo paciente</a>
 		{% endif %}
 	</h3>
 
@@ -40,8 +40,8 @@
                     <div class="tab-content">
 						{% for nota in datos %}
 							<div role="tabpanel" class="tab-pane col-sm-12 col-lg-9" id="{{nota.id}}">
-								{% for item in paciente %}
-									<a href="../../{{nota.url}}/{{item.nss}}" class="btn btn-primary">Capturar {{nota.descripcion}}</a>
+								{% for item in ingreso %}
+									<a href="../../../{{nota.url}}/{{item.nss}}" class="btn btn-primary">Capturar {{nota.descripcion}}</a>
 								{% endfor %}
 							</div>	
 						{% endfor %}

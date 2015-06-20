@@ -1,0 +1,9 @@
+Nota de ingreso e hhistoria medica se capturan ambas 
+Mantener los datos del derechohabiente siempre en el encabezado
+Mantener un icono que al ser pulsado muestre el numero de seguridad social
+Separar cada diagnostico por formularios para tener espacio para capturar multiples sindromes o patologias
+Incluir catalogo de cie-10
+habilitar administrador para catalogos
+Listar e incluir catalogos faltantes
+Enrutar formatos medicos faltantes
+Evaluar la posibilidad de modo lectura en aplicacion (self)

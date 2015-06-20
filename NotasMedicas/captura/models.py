@@ -26,8 +26,8 @@ class EstructuraEch(models.Model):
 class IngresoIdentificacion(models.Model):
     nss = models.CharField(max_length=135)
     nombre = models.CharField(max_length=135)
-    edad = models.IntegerField()
     fecha_nacimiento = models.CharField(max_length=135)
+    edad = models.IntegerField()
     sexo = models.CharField(max_length=40)
     estado = models.CharField(max_length=135)
     escolaridad = models.CharField(max_length=135)
@@ -35,7 +35,7 @@ class IngresoIdentificacion(models.Model):
     ocupacion = models.CharField(max_length=135)
     estado_civil = models.CharField(max_length=135)
     tipo_interrogatorio = models.CharField(max_length=135)
-    status = models.CharField(max_length=135, null=True, blank=True, default="Ingresado")
+    status = models.CharField(max_length=135, null=True, blank=True, default="Ingreso")
     cama = models.CharField(max_length=135)
     class Meta:
         db_table = u'Ingreso_Identificacion'

@@ -18,7 +18,7 @@
 					<td>{{campo.label}}</td>
 					<td>
 						{{campo}}
-						{% if campo.field.widget.attrs.readonly %}
+						{% if campo.field.widget.attrs.readonly and campo.name != 'nss' %}
 							<div id="slot_{{campo.name}}" class="col-sm-2 col-md-7 items"></div>
 							<button type="button" class="btn btn-success " data-toggle="modal" data-target="#MyModal" id="btnModalCap" data-whatever="{{campo.label}}">
 								Captura

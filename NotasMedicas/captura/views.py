@@ -45,21 +45,6 @@ def Login(request):
 	return render_to_response(template, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
-def Formatos(request, nss):
-	template = 'formatos.html'
-	datos = EstructuraEch.objects.all()
-	ingreso = IngresoIdentificacion.objects.filter(nss=nss)
-	rev = Tbl2Revision.objects.filter(nss=nss)
-	evo = Tbl2Evolucion.objects.filter(nss=nss)
-	resultado = {'datos':datos, 'ingreso':ingreso}
-	return render_to_response(template, resultado, context_instance=RequestContext(request))
-
-@login_required(login_url='/')
-def Apache(request):
-	template = 'apache.html'
-	return render_to_response(template, context_instance=RequestContext(request))
-
-@login_required(login_url='/')
 def Camas(request):
 	template = 'camas.html'
 	nombres = []
@@ -76,21 +61,32 @@ def Camas(request):
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
-def CapIdentificacion(request,nss):
+def Formatos(request, nss, cama):
+	request.session['cama'] = cama
+	print cama
+	template = 'formatos.html'
+	datos = EstructuraEch.objects.all()
+	ingreso = IngresoIdentificacion.objects.filter(nss=nss)
+	rev = Tbl2Revision.objects.filter(nss=nss)
+	evo = Tbl2Evolucion.objects.filter(nss=nss)
+	resultado = {'datos':datos, 'ingreso':ingreso,'cama':request.session['cama']}
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+@login_required(login_url='/')
+def CapIdentificacion(request,cama):
 	template = 'ingreso.html'
 	if request.method=='POST':
 		formulario = FrmIngresoIdentificacion(request.POST)
-		formulario.fields["nss"].initial = nss
 		if formulario.is_valid():
+			nss = request.POST['nss']
 			formulario.save()
 			resultado = {'form':formulario}
-			return HttpResponseRedirect('/antecedentes/'+nss)
+			return HttpResponseRedirect('/formatos/'+nss)
 		else:
 			resultado = {'form':formulario}
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		formulario = FrmIngresoIdentificacion()
-		formulario.fields["nss"].initial = nss
 		pass
 		resultado = {'form':formulario}
 	

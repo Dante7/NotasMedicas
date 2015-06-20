@@ -59,11 +59,11 @@
 					{% for cama in camas %}
 						{% if sect.seccion == cama.seccion %}
 							{% if cama.nombre %}
-								<a href="../formatos/{{cama.nss}}" name="{{cama.nombre}}" class="btn btn-primary btn-lg col-xs-5 col-sm-5 col-lg-1 camas" role="button">
+								<a href="../formatos/{{cama.nss}}/{{cama.cama}}" name="{{cama.nombre}}" class="btn btn-primary btn-lg col-xs-5 col-sm-5 col-lg-1 camas" role="button">
 									{{cama.cama}}
 								</a>
 							{% else %}
-								<a href="../formatos/{{cama.nss}}" name="{{cama.nombre}}" class="btn btn-default btn-lg col-xs-5 col-sm-5 col-lg-1 camas" role="button">
+								<a href="../formatos/{{cama.nss}}/{{cama.cama}}" name="{{cama.nombre}}" class="btn btn-default btn-lg col-xs-5 col-sm-5 col-lg-1 camas" role="button">
 									{{cama.cama}}
 								</a>
 							{% endif %}
