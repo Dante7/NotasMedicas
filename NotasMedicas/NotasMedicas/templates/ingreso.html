@@ -6,11 +6,33 @@
 	    $('[data-toggle="tooltip"]').tooltip({
 	        placement : 'top'
 	    });
+	    if ('{{next}}' == 'True') {
+			$('input').each(function(){
+		       $(this).prop('disabled', true);
+		    })
+		    $('textarea').each(function(){
+		       $(this).prop('disabled', true);
+		    })
+		};
+		$(function () {
+		  $('[data-toggle="popover"]').popover()
+		})
 	});
 </script>
-	<h2 class="bg-primary">
-		Ingreso
-	</h2>
+<div class="row">
+	<h3 class="bg-info">
+		{% if ingreso %}
+			{% for item in ingreso %}
+				<a href="#"  class="btn btn-info btn-sm" data-toggle="popover" title="NSS" data-placement="bottom" data-content="{{item.nss}}">
+					<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+				</a>
+				{{item.nombre}}  &nbsp;
+				{{item.cama}}  &nbsp;
+			{% endfor %}
+		{% endif %}
+	</h3>
+
+</div>
 	<form action="" class="form-horizontal" role="form" method="post" id="captura">{% csrf_token %}
 		<table class="table table-condensed">
 			{% for campo in form  %}
@@ -38,7 +60,11 @@
 				</tr>
 			{% endfor %}
 		</table>
-		<input class="btn btn-primary" type="submit" value="Guardar">
+		{% if next %}
+			<a href="../..{{url}}" class="btn btn-primary">Siguiente</a>			
+		{% else %}
+			<input class="btn btn-primary" type="submit" value="Guardar">
+		{% endif %}
 	</form>
 
 	<div class="modal fade col-md-12" tabindex="-1" id="MyModal">

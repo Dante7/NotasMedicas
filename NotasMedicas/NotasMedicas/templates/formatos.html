@@ -3,10 +3,19 @@
 
 {% block captura  %}
 
+<script>
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+</script>
+
 <div class="row">
-	<h3 class="bg-primary">
+	<h3 class="bg-info">
 		{% if ingreso %}
 			{% for item in ingreso %}
+				<a href="#"  class="btn btn-info btn-sm" data-toggle="popover" title="NSS" data-placement="bottom" data-content="{{item.nss}}">
+					<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+				</a>
 				{{item.nombre}}  &nbsp;
 				{{item.cama}}  &nbsp;
 				<a href="#menu-toggle"  class="btn btn-info btn-sm hidden-lg hidden-md lan">

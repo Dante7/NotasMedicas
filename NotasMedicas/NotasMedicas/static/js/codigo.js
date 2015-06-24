@@ -61,7 +61,6 @@ function GuardaJson (name) {
 	EliminaRow('temporal');
 }
 
-// datepart: 'y', 'm', 'w', 'd', 'h', 'n', 's'
 function DateFormat (StrDate) {
     // Le code...
     var strD = StrDate;

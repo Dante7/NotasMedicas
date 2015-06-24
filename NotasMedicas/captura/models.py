@@ -23,6 +23,74 @@ class EstructuraEch(models.Model):
     class Meta:
         db_table = u'estructura_ech'
 
+class HcAnt(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=405)
+    antecedentes_heredofamiliares = models.CharField(max_length=405)
+    antecedentes_personales_no_patologicos = models.CharField(max_length=405)
+    antecedentes_personales_patologicos = models.CharField(max_length=405)
+    class Meta:
+        db_table = u'hc_antecedentes'
+
+class HcPatologia(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=405)
+    antecedentes_personales_patologicos = models.CharField(max_length=405)
+    class Meta:
+        db_table = u'hc_antecedentes_patologicos'
+
+class HcDiag(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=405)
+    diagnostico_sindromaticos = models.CharField(max_length=405)
+    diagnostico_nosologico = models.CharField(max_length=405)
+    diagnostico_diferencial = models.CharField(max_length=405)
+    apache = models.CharField(max_length=405)
+    plan_comentario = models.CharField(max_length=405)
+    class Meta:
+        db_table = u'hc_diagnostico'
+
+class HcExploracion(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=405)
+    padecimiento_actual = models.CharField(max_length=405)
+    ta = models.CharField(max_length=405)
+    fc = models.CharField(max_length=405)
+    fr = models.CharField(max_length=405)
+    temp = models.CharField(max_length=405)
+    sat = models.CharField(max_length=405)
+    peso = models.CharField(max_length=405)
+    talla = models.CharField(max_length=405)
+    imc = models.CharField(max_length=405)
+    class Meta:
+        db_table = u'hc_exploracion'
+
+class HcIdentificacion(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=405)
+    nombre = models.CharField(max_length=405)
+    edad = models.IntegerField()
+    fecha_nacimiento = models.CharField(max_length=405)
+    sexo = models.CharField(max_length=120)
+    estado = models.CharField(max_length=405)
+    escolaridad = models.CharField(max_length=405)
+    religion = models.CharField(max_length=405)
+    ocupacion = models.CharField(max_length=405)
+    estado_civil = models.CharField(max_length=405)
+    tipo_interrogatorio = models.CharField(max_length=405)
+    status = models.CharField(max_length=405, blank=True)
+    cama = models.CharField(max_length=405)
+    class Meta:
+        db_table = u'hc_identificacion'
+
+class HcLabGab(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=405)
+    laboratorio = models.CharField(max_length=405)
+    gabinete = models.CharField(max_length=405)
+    class Meta:
+        db_table = u'hc_laboratorio_gabinete'
+
 class IngresoIdentificacion(models.Model):
     nss = models.CharField(max_length=135)
     nombre = models.CharField(max_length=135)
@@ -74,7 +142,7 @@ class IngresoExploracion(models.Model):
     class Meta:
         db_table = u'Ingreso_Exploracion'
 
-class IngresoLabGAb(models.Model):
+class IngresoLabGab(models.Model):
     """docstring for Tbl3ingreso"""
     nss = models.CharField(max_length=135)
     laboratorio = models.CharField(max_length=135)
@@ -95,7 +163,7 @@ class IngresoDiag(models.Model):
     class Meta:
         db_table = u'Ingreso_Diagnostico'
 
-class Tbl2Evolucion(models.Model):
+class TblEvolucion(models.Model):
     #id = models.IntegerField(primary_key=True)
     nss = models.CharField(max_length=135)
     fecha = models.DateField(auto_now_add=True)
@@ -120,9 +188,9 @@ class Tbl2Evolucion(models.Model):
     pronostico = models.CharField(max_length=750, blank=True)
     tratamiento = models.CharField(max_length=750, blank=True)
     class Meta:
-        db_table = u'tbl2_evolucion'
+        db_table = u'tbl_evolucion'
 
-class Tbl2Revision(models.Model):
+class TblRevision(models.Model):
     #id = models.IntegerField(primary_key=True)
     nss = models.CharField(max_length=135)
     fecha = models.DateField(auto_now_add=True)
@@ -147,27 +215,28 @@ class Tbl2Revision(models.Model):
     pronostico = models.CharField(max_length=750, blank=True)
     tratamiento = models.CharField(max_length=750, blank=True)
     class Meta:
-        db_table = u'tbl2_revision'
+        db_table = u'tbl_revision'
 
-class Tbl4Inter(models.Model):
+class TblInter(models.Model):
     #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=750)
     prioridad = models.CharField(max_length=750)
     calidad = models.CharField(max_length=750)
     atendido_por = models.CharField(max_length=750)
     enviado_por = models.CharField(max_length=750)
     fecha = models.DateField()
-    nss = models.CharField(max_length=750)
     class Meta:
         db_table = u'tbl4_inter'
 
-class Tbl5Preop(models.Model):
+class TblPreop(models.Model):
     #id = models.IntegerField(primary_key=True)
     nss = models.CharField(max_length=750)
     class Meta:
-        db_table = u'tbl5_preop'
+        db_table = u'tbl_preop'
 
-class Tbl6Egreso(models.Model):
+class TblEgreso(models.Model):
     #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=765)
     fecha_ingreso = models.DateField()
     fecha_egreso = models.DateField()
     motivo_egreso = models.CharField(max_length=750)
@@ -182,9 +251,22 @@ class Tbl6Egreso(models.Model):
     atencion_factores_riesgo = models.TextField()
     pronostico = models.TextField()
     causa_defuncion = models.TextField()
-    nss = models.CharField(max_length=765)
     class Meta:
-        db_table = u'tbl6_egreso'
+        db_table = u'tbl_egreso'
+
+class TblIndicaciones(models.Model):
+    #id = models.IntegerField(primary_key=True)
+    nss = models.CharField(max_length=765)
+    fecha = models.DateField(auto_now_add=True)
+    hora = models.DateTimeField(auto_now_add=True)
+    dieta = models.TextField(blank=True)
+    medidas_generales = models.TextField(blank=True)
+    soluciones = models.TextField(blank=True)
+    infusiones = models.TextField(blank=True)
+    medicamentos = models.TextField(blank=True)
+    pendientes = models.TextField(blank=True)
+    class Meta:
+        db_table = u'tbl_indicaciones'
 
 
 #Vista generada desde mysql

@@ -15,6 +15,14 @@ urlpatterns = patterns('',
 
     #url(r'^apache/', 'captura.views.Apache'),
 
+    #Inician url's de historia clinica
+    url(r'^HCantecedentes/(?P<nss>\w+)/$', 'captura.views.CapAntHC'),
+    url(r'^HCpatologia/(?P<nss>\w+)/$', 'captura.views.CapPatologiaHC'),
+    url(r'^HCexploracion/(?P<nss>\w+)/$', 'captura.views.CapExploracionHC'),
+    url(r'^HClabgab/(?P<nss>\w+)/$', 'captura.views.CapLabGAbHC'),
+    url(r'^CHdiagnostico/(?P<nss>\w+)/$', 'captura.views.CapDiagHC'),
+    #Terminan url's de historia clinica
+
     #Inician url's de ingreso
     url(r'^identificacion/(?P<cama>\w+)/$', 'captura.views.CapIdentificacion'),
     url(r'^antecedentes/(?P<nss>\w+)/$', 'captura.views.CapAnt'),
@@ -26,14 +34,10 @@ urlpatterns = patterns('',
 
     url(r'^evolucion/(?P<nss>\w+)/$', 'captura.views.CapEvolucion'),
     url(r'^revision/(?P<nss>\w+)/$', 'captura.views.CapRevision'),
-    url(r'^alta/', 'captura.views.CapAlta'),
-    url(r'^defuncion/', 'captura.views.CapDefuncion'),
+    url(r'^egreso/(?P<nss>\w+)/$', 'captura.views.CapEgreso'),
+    #url(r'^inter/(?P<nss>\w+)/$', 'captura.views.CapInter'),
+    url(r'^indicaciones/(?P<nss>\w+)/$', 'captura.views.CapIndi'),
 
-
-    url(r'^busqueda/', 'captura.views.Busqueda'),
-    url(r'^nota/', 'captura.views.CapNota'),
-    url(r'^paciente/', 'captura.views.CapPaciente'),
-    url(r'^ingreso/', 'captura.views.CapIngreso'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
