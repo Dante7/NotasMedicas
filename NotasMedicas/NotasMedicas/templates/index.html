@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	{% load dajaxice_templatetags %}
-	{% dajaxice_js_import %}
 	{% load static %}
 	{% get_static_prefix as STATIC_PREFIX %}
+	{% load dajaxice_templatetags %}
+	<script src="{{STATIC_PREFIX}}dajaxice/dajaxice.core.js" type="text/javascript"></script>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Inicio</title>
