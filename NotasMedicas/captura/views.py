@@ -136,7 +136,7 @@ def CapAnt(request,nss):
 
 @login_required(login_url='/')
 def CapPatologia(request,nss):
-	template = 'ingreso.html'
+	template = 'ingreso_dajax.html'
 	next = False
 	url = '/exploracion/'+nss
 	ingreso = IngresoIdentificacion.objects.filter(nss=nss)

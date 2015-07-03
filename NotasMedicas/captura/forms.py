@@ -102,7 +102,6 @@ class FrmHcPatologia(ModelForm):
 		super(FrmHcPatologia, self).__init__(*args, **kwargs)
 		for myField in self.fields:
 			self.fields[myField].widget.attrs['class'] = 'form-control'
-			self.fields[myField].widget.attrs['readonly'] = True
 	class Meta:
 		model = HcPatologia
 
@@ -191,7 +190,9 @@ class FrmIngresoPatologia(ModelForm):
 		super(FrmIngresoPatologia, self).__init__(*args, **kwargs)
 		for myField in self.fields:
 			self.fields[myField].widget.attrs['class'] = 'form-control'
-			self.fields[myField].widget.attrs['readonly'] = True
+			if myField == 'nss':
+				self.fields[myField].widget = forms.HiddenInput()
+				pass
 	class Meta:
 		model = IngresoPatologia
 

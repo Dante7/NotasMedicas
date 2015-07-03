@@ -39,34 +39,31 @@
 	</h3>
 
 </div>
-	<form action="" class="form-horizontal" role="form" method="post" id="captura">{% csrf_token %}
+	<form action="" class="form-inline" role="form" method="post" id="captura">{% csrf_token %}
 		<table class="table table-condensed">
-			{% for campo in form  %}
-				<tr>
-					<td>{{campo.label}}</td>
-					<td>
-						{{campo}}
-						{% if campo.field.widget.attrs.readonly and campo.name != 'nss' %}
-							<div id="slot_{{campo.name}}" class="col-sm-2 col-md-7 items"></div>
-							<button type="button" class="btn btn-success " data-toggle="modal" data-target="#MyModal" id="btnModalCap" data-whatever="{{campo.label}}">
-								Captura
-							</button>
-						{% endif %}
-					</td>
-					{% if campo.errors %}
+			<tr>
+				{% for campo in form  %}
 						<td>
-							<a href="#" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" class="error">
-								<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" aria-hidden="true"></span>
-							</a>
+							<div class="form-group">
+								{% if campo.name != 'nss' %}
+									{{campo.label}}
+								{% endif %}
+								{{campo}}
+							</div>
 						</td>
-					{% endif %}
-				</tr>
-			{% endfor %}
+						{% if campo.errors %}
+							<td>
+								<a href="#" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" class="error">
+									<span class="glyphicon glyphicon-exclamation-sign" data-toggle="tooltip" data-original-title="{{campo.errors.as_text}}" aria-hidden="true"></span>
+								</a>
+							</td>
+						{% endif %}
+				{% endfor %}
+			</tr>
 		</table>
+		<input class="btn btn-primary" type="submit" value="Guardar">
 		{% if next %}
-			<a href="../..{{url}}" class="btn btn-primary">Siguiente</a>			
-		{% else %}
-			<input class="btn btn-primary" type="submit" value="Guardar">
+			<a href="../..{{url}}" class="btn btn-primary">Siguiente</a>
 		{% endif %}
 	</form>
 

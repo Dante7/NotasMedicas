@@ -35,7 +35,10 @@ class HcAnt(models.Model):
 class HcPatologia(models.Model):
     #id = models.IntegerField(primary_key=True)
     nss = models.CharField(max_length=405)
-    antecedentes_personales_patologicos = models.CharField(max_length=405)
+    patologia = models.CharField(max_length=405)
+    tratamiento = models.CharField(max_length=405)
+    tratamiento_previo = models.CharField(max_length=405)
+    detonador = models.CharField(max_length=405)
     class Meta:
         db_table = u'hc_antecedentes_patologicos'
 
@@ -121,7 +124,10 @@ class IngresoAnt(models.Model):
 class IngresoPatologia(models.Model):
     """docstring for Tbl3ingreso"""
     nss = models.CharField(max_length=135)
-    antecedentes_personales_patologicos = models.CharField(max_length=135)
+    patologia = models.CharField(max_length=405)
+    tratamiento = models.CharField(max_length=405)
+    tratamiento_previo = models.CharField(max_length=405)
+    detonador = models.CharField(max_length=405)
 
     class Meta:
         db_table = u'Ingreso_Antecedentes_patologicos'
