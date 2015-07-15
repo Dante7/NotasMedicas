@@ -3,22 +3,35 @@
 {% block captura  %}
 
 <script>
-	$(function() {
-		var availableTags = {{nombres|safe}};
+	function my_js_callback(data){
+	    alert(data.message);
+	}
 
-		$( "#nombre" ).autocomplete({
-			source: availableTags,
-			sortResults: true
+	function decode_utf8(s) { 
+		return decodeURIComponent(escape(s)); 
+	}
+
+	$(function(){
+		for (var i = Things.length - 1; i >= 0; i--) {
+			Things[i]
+		};
+		var datos = {{nombres|safe}};
+
+		// setup autocomplete function pulling from currencies[] array
+		$('#autocomplete').autocomplete({
+			lookup: datos,
+			onSelect: function (suggestion) {
+			var thehtml = '<strong>Currency Name:</strong> ' + suggestion.value + ' <br> <strong>Symbol:</strong> ' + suggestion.data;
+			$('#outputcontent').html(thehtml);
+			}
 		});
 	});
 </script>
-<script>
-		function my_js_callback(data){
-		    alert(data.message);
-		}
-</script>
+	<div id="searchfield">
+		<form><input type="text" name="currency" class="biginput" id="autocomplete"></form>
+	</div><!-- @end #searchfield -->
 	<h2 class="bg-primary">Camas</h2>
-
+	
 	<form action="" class="form-inline busqueda">
 		<div class="row">
 			<div  class="form-group col-sm-12 col-xs-12 col-lg-2">
@@ -26,6 +39,9 @@
 			</div>
 			<div  class="form-group col-sm-12 col-xs-12 col-lg-2">
 				<input type="text" class="form-control" id="nss" name="nss" placeholder="NSS"> 
+			</div>
+			<div  class="form-group col-sm-12 col-xs-12 col-lg-2">
+				<input type="button" class="button btn-primary form-control" id="BedSearch" value="filtrar"> 
 			</div>
 			<button class="btn btn-primary" type="button" onclick="Dajaxice.captura.sayhello(my_js_callback);">
 				Camas ocupadas:<span class="badge">{{n}}</span>

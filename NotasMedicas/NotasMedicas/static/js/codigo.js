@@ -84,25 +84,26 @@ $( document ).ready(function() {
     });
 
     //busqueda de camas con boton
-    /*$("#BedSearch").click(function () {
+    $("#BedSearch").click(function () {
         var valor = $('#nombre').val();
-        console.log(valor);
+        //console.log(valor);
         var seccion = $(".panel-collapse");
         seccion.each(function() {
-            // You can access `collection.length` here.
             $(this).collapse('show');
         });
         var botones = $(".camas");
         botones.each(function () {
+            
             // body...
             if ($(this).attr('name').trim() == valor) 
             {
-                $(this).removeClass('disabled');
+                $(this).show();
             }else{
-                $(this).addClass('disabled');
+                $(this).hide();
             };
         });
-    });*/
+    });
+/*
     //busqueda de camas sin boton
     $("#nombre").keyup(function () {
         var valor = $('#nombre').val();
@@ -144,7 +145,7 @@ $( document ).ready(function() {
         });
     });
 
-
+*/
 
     $("#btnModalCap").click(function () {
         var tabla = $("#tblModal");

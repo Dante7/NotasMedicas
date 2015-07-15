@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # Create your views here.
 from captura.models import *
 from captura.forms import *
@@ -52,10 +55,13 @@ def Camas(request):
 	camas = CamaPaciente.objects.all()
 	nom = CamaPaciente.objects.filter(nss__isnull=False).order_by('nombre')
 	for row in nom:
+		item = {}
 		nombre = row.nombre
-		nombres.append(nombre)
+		nombre = nombre.encode("utf-8")
+		item['value'] = nombre
+		item['data'] = row.nss
+		nombres.append(item)
 		pass
-	#print nombres
 	n = CamaPaciente.objects.filter(nss__isnull=False).count()
 	resultado = {'seccion':seccion, 'camas':camas, 'nombres':nombres, 'n':n}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
