@@ -58,8 +58,8 @@ def Camas(request):
 		item = {}
 		nombre = row.nombre
 		nombre = nombre.encode("utf-8")
-		item['value'] = nombre
-		item['data'] = row.nss
+		item['value'] = str(nombre) + ' - ' + str(row.nss)
+		item['data'] = str(row.nss)
 		nombres.append(item)
 		pass
 	n = CamaPaciente.objects.filter(nss__isnull=False).count()
@@ -93,7 +93,7 @@ def CapIdentificacion(request,cama):
 		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		if request.session['nss']:
-			instancia = HcIdentificacion.objects.filter(nss=request.session['nss'])
+			instancia = IngresoIdentificacion.objects.filter(nss=request.session['nss'])
 			formulario = FrmIngresoIdentificacion(instance=instancia)
 		else:
 			formulario = FrmIngresoIdentificacion()
@@ -299,7 +299,7 @@ def CapAntHC(request,nss):
 	template = 'ingreso.html'
 	next = False
 	url = '/patologia/'+nss
-	ingreso = HcIdentificacion.objects.filter(nss=nss)
+	ingreso = IngresoIdentificacion.objects.filter(nss=nss)
 	try:
 		instancia = HcAnt.objects.get(nss=nss)
 	except:
@@ -337,7 +337,7 @@ def CapPatologiaHC(request,nss):
 	template = 'ingreso.html'
 	next = False
 	url = '/exploracion/'+nss
-	ingreso = HcIdentificacion.objects.filter(nss=nss)
+	ingreso = IngresoIdentificacion.objects.filter(nss=nss)
 	try:
 		instancia = HcPatologia.objects.get(nss=nss)
 	except:
@@ -375,7 +375,7 @@ def CapExploracionHC(request,nss):
 	template = 'ingreso.html'
 	next = False
 	url = '/labgab/'+nss
-	ingreso = HcIdentificacion.objects.filter(nss=nss)
+	ingreso = IngresoIdentificacion.objects.filter(nss=nss)
 	try:
 		instancia = HcExploracion.objects.get(nss=nss)
 	except:
@@ -413,7 +413,7 @@ def CapLabGAbHC(request,nss):
 	template = 'ingreso.html'
 	next = False
 	url = '/diagnostico/'+nss
-	ingreso = HcIdentificacion.objects.filter(nss=nss)
+	ingreso = IngresoIdentificacion.objects.filter(nss=nss)
 	try:
 		instancia = HcLabGab.objects.get(nss=nss)
 	except:
@@ -451,7 +451,7 @@ def CapDiagHC(request,nss):
 	template = 'ingreso.html'
 	next = False
 	url = '/formatos/'+nss+'/'+request.session['cama']
-	ingreso = HcIdentificacion.objects.filter(nss=nss)
+	ingreso = IngresoIdentificacion.objects.filter(nss=nss)
 	try:
 		instancia = HcDiag.objects.get(nss=nss)
 	except:

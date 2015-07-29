@@ -12,40 +12,30 @@
 	}
 
 	$(function(){
-		for (var i = Things.length - 1; i >= 0; i--) {
-			Things[i]
-		};
-		var datos = {{nombres|safe}};
-
+		var datos = {{nombres|safe}}
+		//Limpia caracteres extraños
+		$(datos).each(function (){
+			$(this)[0]['value'] = decode_utf8($(this)[0]['value']);
+		});
 		// setup autocomplete function pulling from currencies[] array
-		$('#autocomplete').autocomplete({
-			lookup: datos,
-			onSelect: function (suggestion) {
-			var thehtml = '<strong>Currency Name:</strong> ' + suggestion.value + ' <br> <strong>Symbol:</strong> ' + suggestion.data;
-			$('#outputcontent').html(thehtml);
-			}
+		$('#nombre').autocomplete({
+			lookup: datos
 		});
 	});
 </script>
-	<div id="searchfield">
-		<form><input type="text" name="currency" class="biginput" id="autocomplete"></form>
-	</div><!-- @end #searchfield -->
-	<h2 class="bg-primary">Camas</h2>
+
+	<h3 class="bg-primary box-shade">Camas ocupadas {{n}}</h3>
 	
-	<form action="" class="form-inline busqueda">
+	<form action="" class="form busqueda">
 		<div class="row">
-			<div  class="form-group col-sm-12 col-xs-12 col-lg-2">
-				<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del paciente"> 
+			<div  class="form-group col-sm-12 col-xs-12 col-md-4 col-lg-6">
+				<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre o numero de seguridad social del paciente"> 
 			</div>
-			<div  class="form-group col-sm-12 col-xs-12 col-lg-2">
-				<input type="text" class="form-control" id="nss" name="nss" placeholder="NSS"> 
+			<div  class="form-group col-sm-12 col-xs-12 col-md-3 col-lg-1">
+				<button type="button" class="button btn-primary form-control" id="BedSearch">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>
 			</div>
-			<div  class="form-group col-sm-12 col-xs-12 col-lg-2">
-				<input type="button" class="button btn-primary form-control" id="BedSearch" value="filtrar"> 
-			</div>
-			<button class="btn btn-primary" type="button" onclick="Dajaxice.captura.sayhello(my_js_callback);">
-				Camas ocupadas:<span class="badge">{{n}}</span>
-			</button>
 		</div>
 	</form>
 	
@@ -80,7 +70,7 @@
 					{% for cama in camas %}
 						{% if sect.seccion == cama.seccion %}
 							{% if cama.nombre %}
-								<a href="../formatos/{{cama.nss}}/{{cama.cama}}" name="{{cama.nombre}}" class="btn btn-primary btn-lg col-xs-5 col-sm-5 col-lg-1 camas" role="button">
+								<a href="../formatos/{{cama.nss}}/{{cama.cama}}" name="{{cama.nombre}} - {{cama.nss}}" class="btn btn-primary btn-lg col-xs-5 col-sm-5 col-lg-1 camas" role="button">
 									{{cama.cama}}
 								</a>
 							{% else %}

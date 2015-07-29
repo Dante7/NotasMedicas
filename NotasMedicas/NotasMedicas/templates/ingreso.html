@@ -20,13 +20,10 @@
 	});
 </script>
 <script>
-	function calculate(){
-		Dajaxice.captura.Concat(Dajax.process,{'a':$('#a').val(),'b':$('#b').val()})
-	}
 </script>
 
 <div class="row">
-	<h3 class="bg-info">
+	<h3 class="bg-primary">
 		{% if ingreso %}
 			{% for item in ingreso %}
 				<a href="#"  class="btn btn-info btn-sm" data-toggle="popover" title="NSS" data-placement="bottom" data-content="{{item.nss}}">
@@ -34,10 +31,13 @@
 				</a>
 				{{item.nombre}}  &nbsp;
 				{{item.cama}}  &nbsp;
+				<a href="../../formatos/{{item.nss}}/{{item.cama}}" class="btn btn-info btn-sm">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+				</a>
 			{% endfor %}
 		{% endif %}
-	</h3>
 
+	</h3>
 </div>
 	<form action="" class="form-horizontal" role="form" method="post" id="captura">{% csrf_token %}
 		<table class="table table-condensed">
